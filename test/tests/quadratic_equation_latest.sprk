@@ -1,0 +1,1097 @@
+{
+  "title": "Quadratic Equations Questons",
+  "testType": "exam",
+  "description": "",
+  "timeLimitMinutes": null,
+  "defaultPositiveMarks": 4,
+  "defaultNegativeMarks": -1,
+  "shuffleQuestions": false,
+  "shuffleOptions": true,
+  "questions": [
+    {
+      "id": "q_1786910793821_8v5kmy",
+      "text": "Let $p, q \\in \\mathbb{Q}$. If $2 - \\sqrt{3}$ is a root of the equation $x^2 - px + q = 0$, then:",
+      "type": "mcq",
+      "options": [
+        "$q^2 + p + 14 = 0$",
+        "$q^2 - 4p - 12 = 0$",
+        "$p^2 - 4q - 12 = 0$",
+        "$p^2 - 4q + 12 = 0$"
+      ],
+      "correctAnswer": "$p^2 - 4q - 12 = 0$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_6pflzf",
+      "text": "If $\\alpha$ and $\\beta$ are distinct roots of $ax^2 + bx + c = 0$ where $a, b, c$ are non-zero real numbers, then $\\frac{a\\alpha^2 + b\\alpha + 6c}{a\\beta^2 + b\\beta + 9c} + \\frac{a\\beta^2 + b\\beta + 19c}{a\\alpha^2 + b\\alpha + 13c}$ is equal to:",
+      "type": "mcq",
+      "options": [
+        "$18c$",
+        "$27c$",
+        "$\\frac{36}{27}$",
+        "$\\frac{17}{8}$"
+      ],
+      "correctAnswer": "$\\frac{17}{8}$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_u9mmg8",
+      "text": "Suppose $a, b$ denote the distinct real roots of $x^2 + 20x - 2020$ and suppose $c, d$ denote distinct complex roots of the polynomial $x^2 - 20x + 2020$. Then the value of $ac(a-c) + ad(a-d) + bc(b-c) + bd(b-d)$ is:",
+      "type": "mcq",
+      "options": [
+        "$0$",
+        "$8000$",
+        "$8080$",
+        "$16000$"
+      ],
+      "correctAnswer": "$16000$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_1e5wny",
+      "text": "If $\\alpha$ and $\\beta$ are roots of $x^2 - 7x - 4 = 0$. If $\\alpha^4 + \\beta^3 = p\\alpha + q\\beta + s$, then find $p, q$ and $s$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "p = 371, q = 53, s = 236",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_gibtpd",
+      "text": "If $\\alpha, \\beta$ are distinct roots of equation $x^2 + 3^{\\frac{1}{4}}x + 3^{\\frac{1}{2}} = 0$, then the value of $\\alpha^{96}(\\alpha^{12} - 1) + \\beta^{96}(\\beta^{12} - 1)$ is equal to:",
+      "type": "mcq",
+      "options": [
+        "$56 \\times 3^{25}$",
+        "$56 \\times 3^{24}$",
+        "$52 \\times 3^{24}$",
+        "$25 \\times 3^{25}$"
+      ],
+      "correctAnswer": "$52 \\times 3^{24}$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_qjoug6",
+      "text": "The number of all possible positive integer values of $r$ for which the roots of the equation $6x^2 - 11x + r = 0$ are rational numbers is:",
+      "type": "mcq",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$2$"
+      ],
+      "correctAnswer": "$3$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_y4yzmf",
+      "text": "If $a, b, c \\in \\mathbb{Q}$ and $a + b + c = 0$, are roots of $ax^2 + bx + c = 0$ also rational?",
+      "type": "mcq",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_npq5xo",
+      "text": "If $a, b, c$ are integers such that the roots of the equation $ax^2 + bx + c = 0$ are rational, find the value(s) of $k$, for which the roots of equation $4ax^2 + 12bx + kc = 0$ are also rational roots.",
+      "type": "multiple_select",
+      "options": [
+        "$36$",
+        "$9$",
+        "$0$",
+        "$144$"
+      ],
+      "correctAnswer": [
+        "$36$"
+      ],
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_pgndv0",
+      "text": "If $a, b, c$ are odd integers, then prove that the quadratic equation $ax^2 + bx + c = 0$ has no rational roots.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "Proved",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_0kw5cc",
+      "text": "Find the integral value of $m$ for which the roots of the equation $mx^2 + (2m-1)x + (m-2) = 0$ are rational roots.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "0",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_gowang",
+      "text": "If $p$ & $q$ are odd integers, then prove that the equation $x^2 + 2px + 2q = 0$ has no rational roots.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "Proved",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_gjsgjp",
+      "text": "If $a$ & $b$ are integers & the roots of equation $x^2 + ax + b = 0$ are rational. Show that they will be integers.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "Proved",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_ier6qz",
+      "text": "If $\\alpha$ & $\\beta$ are the roots of equation $ax^2 + bx + c = 0$, then find the quadratic equation with roots $\\alpha\\beta^2$ and $\\beta\\alpha^2$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "a^3 x^2 + abc x + c^3 = 0",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_rgtosa",
+      "text": "If $\\alpha \\neq \\beta$, $\\alpha^2 = 5\\alpha - 3$, $\\beta^2 = 5\\beta - 3$, then find the equation whose roots are $\\frac{\\alpha}{\\beta}$ and $\\frac{\\beta}{\\alpha}$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "3x^2 - 19x + 3 = 0",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_ce7ycs",
+      "text": "If $\\alpha$ & $\\beta$ ($\\alpha < \\beta$) are the roots of equation $x^2 + bx + c = 0$ where $c < 0 < b$, then:",
+      "type": "mcq",
+      "options": [
+        "$0 < \\alpha < \\beta$",
+        "$\\alpha < \\beta < 0$",
+        "$\\alpha < 0 < \\beta < |\\alpha|$",
+        "$\\alpha < 0 < |\\alpha| < \\beta$"
+      ],
+      "correctAnswer": "$\\alpha < 0 < \\beta < |\\alpha|$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_k4ca3l",
+      "text": "If $3x^2 - 107x - 15729 = 0$, $(\\alpha < \\beta)$, then:",
+      "type": "multiple_select",
+      "options": [
+        "$\\alpha < \\beta < 0$",
+        "$0 < \\alpha < \\beta$",
+        "$\\alpha < 0 < \\beta < |\\alpha|$",
+        "$\\beta < 0 < \\alpha$",
+        "$\\alpha < 0 < \\beta$",
+        "$\\alpha < 0 < |\\alpha| < \\beta$"
+      ],
+      "correctAnswer": [
+        "$\\alpha < 0 < \\beta$",
+        "$\\alpha < 0 < |\\alpha| < \\beta$"
+      ],
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_pyhup5",
+      "text": "Let $a, b, c$ be the length of three sides of a $\\Delta$ satisfying the condition $(a^2 + b^2)x^2 - 2b(a+c)x + a^2 + b^2 = 0$. If the set of all possible values of $x$ is the interval $(\\alpha, \\beta)$, then $|\\alpha^2 + \\beta^2|$ is equal to:",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "2",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_ojeemy",
+      "text": "If $\\alpha, \\beta$ be roots of $x^2 + \\sqrt{2}x - 8 = 0$, and $V_n = \\alpha^n + \\beta^n$, then value of $\\frac{V_{10} + \\sqrt{2}V_9}{V_8}$ is:",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "8",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_hvyugt",
+      "text": "If $\\alpha, \\beta$ be roots of $x^2 - x - 1 = 0$, if $S_n = 2023\\alpha^n + 2024\\beta^n$, then:",
+      "type": "mcq",
+      "options": [
+        "$2S_{12} = S_{11} + S_{10}$",
+        "$S_{12} = S_{11} + S_{10}$",
+        "$2S_{11} = S_{12} + S_{10}$",
+        "$S_{11} = S_{12} + S_{10}$"
+      ],
+      "correctAnswer": "$S_{12} = S_{11} + S_{10}$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_1sg832",
+      "text": "Let $\\alpha, \\beta$ $(\\alpha > \\beta)$ be roots of the quadratic equation $x^2 - x - 4 = 0$. If $P_n = \\alpha^n - \\beta^n$, $n \\in \\mathbb{N}$. Then, $\\frac{P_{15}P_{16} - P_{14}P_{16} - P_{15}^2 + P_{14}P_{15}}{P_{13} \\times P_{14}}$ is equal to:",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "16",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_mfayrj",
+      "text": "For a natural number $n$, let $\\alpha_n = 19^n - 12^n$, then the value of $\\frac{31\\alpha_9 - \\alpha_{10}}{57\\alpha_8}$ is:",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "4",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_ye91ms",
+      "text": "Let $\\alpha, \\beta$ $(\\alpha > \\beta)$ be roots of $x^2 - \\sqrt{2}x - \\sqrt{3} = 0$. Let $P_n = \\alpha^n - \\beta^n$, $n \\in \\mathbb{N}$. Then, $(11\\sqrt{3} - 10\\sqrt{2})P_{10} + (11\\sqrt{2} + 10)P_{11} - 11P_{12}$ is equal to:",
+      "type": "mcq",
+      "options": [
+        "$10\\sqrt{2} P_9$",
+        "$11\\sqrt{2} P_9$",
+        "$10\\sqrt{3} P_9$",
+        "$11\\sqrt{3} P_9$"
+      ],
+      "correctAnswer": "$10\\sqrt{3} P_9$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_weo2kc",
+      "text": "Let $\\alpha, \\beta$ be the roots of the equation $x^2 - x - 1 = 0$. If $P_k = \\alpha^k + \\beta^k, k \\ge 1$, then which of the following statements is NOT true?",
+      "type": "mcq",
+      "options": [
+        "$P_5 = P_2 \\cdot P_3$",
+        "$P_3 = P_5 - P_4$",
+        "$P_1 + P_2 + P_3 + P_4 + P_5 = 26$",
+        "$P_5 = 11$"
+      ],
+      "correctAnswer": "$P_5 = P_2 \\cdot P_3$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_5zprso",
+      "text": "If $a$ and $b$ are the roots of the equation $x^2 - 7x - 1 = 0$, then the value of $\\frac{a^{21} + b^{21} + a^{17} + b^{17}}{a^{19} + b^{19}}$ is:",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "51",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_bu91y0",
+      "text": "If both the roots of the equation $(\\alpha^3 - \\beta^3)x^2 + (\\beta^3 - \\gamma^3)x + (\\gamma^3 - \\alpha^3) = 0$ and $(\\alpha - \\beta)x^2 + (\\beta - \\gamma)x + (\\gamma - \\alpha) = 0$ are common, where $\\alpha, \\beta, \\gamma$ are distinct, then find $\\alpha + \\beta + \\gamma$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "0",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_jzmaiw",
+      "text": "If the equations $x^2 + ax + b = 0$ and $x^2 + bx + a = 0$ have a common root, then find the value of $a+b$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "-1",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_2fjqbs",
+      "text": "Find the value of $k$ so that the equations $2x^2 + kx - 5 = 0$ and $x^2 - 3x - 4 = 0$ have one root common.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "k = -7 or k = -3/4",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_746eto",
+      "text": "Suppose that the quadratic equations $3x^2 + px + 1 = 0$ and $2x^2 + qx + 1 = 0$ have a common root, then the value of $5pq - 2p^2 - 3q^2$ is equal to:",
+      "type": "mcq",
+      "options": [
+        "$0$",
+        "$1$",
+        "$-1$",
+        "$2$"
+      ],
+      "correctAnswer": "$1$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_7yiyad",
+      "text": "If equation $ax^2 + bx + c = 0$, $a, b \\in \\mathbb{R}, a \\neq 0$ and $2x^2 + 3x + 4 = 0$ have a common root, then $a : b : c$ equals:",
+      "type": "mcq",
+      "options": [
+        "$1 : 2 : 3$",
+        "$2 : 3 : 4$",
+        "$4 : 3 : 2$",
+        "$3 : 2 : 1$"
+      ],
+      "correctAnswer": "$2 : 3 : 4$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_3igb74",
+      "text": "If $\\alpha, \\beta$ be the roots of the equation $x^2 - 2\\sqrt{2}x - 1 = 0$. The quadratic equation whose roots are $\\alpha^{-4}$ and $\\beta^{-4}$ is:",
+      "type": "mcq",
+      "options": [
+        "$x^2 - 190x + 9409 = 0$",
+        "$x^2 - 195x + 9409 = 0$",
+        "$x^2 - 195x + 9506 = 0$",
+        "$x^2 - 180x + 9506 = 0$"
+      ],
+      "correctAnswer": "$x^2 - 195x + 9409 = 0$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_6oxrl6",
+      "text": "If $\\alpha$ and $\\beta$ are the roots of the equation $ax^2 + bx + c = 0$, then find a quadratic equation whose roots are $\\frac{1}{\\alpha}$ and $\\frac{1}{\\beta}$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "$cx^2 + bx + a = 0$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_6tji6w",
+      "text": "If $\\alpha$ and $\\beta$ are roots of the equation $x^2 - 5x + 1 = 0$, then find quadratic equation whose roots are $\\frac{1}{\\alpha + 2}$ and $\\frac{1}{\\beta + 2}$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "$15x^2 - 9x + 1 = 0$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_d6l2ux",
+      "text": "If the roots of the equation $\\frac{1}{x+p} + \\frac{1}{x+q} = \\frac{1}{r}$ are equal in magnitude but opposite in sign, then prove that $p, q$ and $r$ are in A.P.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "Proved",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_k7d89o",
+      "text": "If the roots of equation $x^2 - 10x + (\\lambda - 1) = 0$ are in the ratio $2:3$, find $\\lambda$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "25",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_h2pngg",
+      "text": "For the equation $3x^2 + px + 3 = 0, p > 0$, if one of the roots is square of the other, then value of $p$ is:",
+      "type": "mcq",
+      "options": [
+        "$\\frac{1}{3}$",
+        "$1$",
+        "$3$",
+        "$\\frac{2}{3}$"
+      ],
+      "correctAnswer": "$3$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_oo5px8",
+      "text": "If one root is square of the other root of the equation $x^2 + px + q = 0$, then relation between $p$ and $q$ is:",
+      "type": "mcq",
+      "options": [
+        "$p^3 - q(3p-1) + q^2 = 0$",
+        "$p^3 - q(3p+1) + q^2 = 0$",
+        "$p^3 + q(3p-1) + q^2 = 0$",
+        "$p^3 + q(3p+1) + q^2 = 0$"
+      ],
+      "correctAnswer": "$p^3 - q(3p-1) + q^2 = 0$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_r5mub6",
+      "text": "The real values of $a$ for which the roots of quadratic equation $(a^2 - 5a + 4)x^2 - (a^2 - a + 3)x + a^2 - 4 = 0$ have opposite sign roots:",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "$a \\in (-2, 1) \\cup (2, 4)$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_6417wu",
+      "text": "Let $a, b \\in \\mathbb{R}$ such that the equation $ax^2 - 2bx + 15 = 0$ has a repeated root $\\alpha$. If $\\alpha$ and $\\beta$ are roots of the equation $x^2 - 2bx + 21 = 0$, then $\\alpha^2 + \\beta^2 =$",
+      "type": "mcq",
+      "options": [
+        "$37$",
+        "$58$",
+        "$68$",
+        "$92$"
+      ],
+      "correctAnswer": "$58$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_jms4xc",
+      "text": "Find the value of $a$ for which $x^2 + 4ax + 2 > 0, \\forall x \\in \\mathbb{R}$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "$a \\in \\left(-\\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}}\\right)$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_u6pbeb",
+      "text": "Let $S$ be the set of positive integer values of $a$ for which $\\frac{ax^2 + 2(a+1)x + 9a + 4}{x^2 - 8x + 32} < 0, \\forall x \\in \\mathbb{R}$. Then the number of elements in $S$ is:",
+      "type": "mcq",
+      "options": [
+        "$0$",
+        "$1$",
+        "$3$",
+        "$\\infty$"
+      ],
+      "correctAnswer": "$0$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_a2ae62",
+      "text": "If $ax^2 + bx + c = 0$ and $2x^2 + 3x + 4 = 0$ have a common root where $a, b, c \\in \\mathbb{N}$, then the least value of $a + b + c$ is:",
+      "type": "mcq",
+      "options": [
+        "$13$",
+        "$7$",
+        "$9$",
+        "$11$"
+      ],
+      "correctAnswer": "$9$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_u7rc0o",
+      "text": "The quadratic equations $x^2 - 6x + a = 0$ and $x^2 - cx + 6 = 0$ have one root in common. The other roots of the first and second equations are integers in the ratio $4:3$, then the common root is:",
+      "type": "mcq",
+      "options": [
+        "$4$",
+        "$2$",
+        "$3$",
+        "$1$"
+      ],
+      "correctAnswer": "$2$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_k1apx6",
+      "text": "let $a, b, c$ be real numbers $a \\neq 0$. Let $\\alpha, \\beta$ be the roots of the equation $ax^2 + bx + c = 0$. Express the roots of $a^3 x^2 + abc x + c^3 = 0$ in $\\alpha, \\beta$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "$\\alpha^2\\beta, \\alpha\\beta^2$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_rp9l26",
+      "text": "If $\\alpha, \\beta, \\gamma$ are the roots of equation $4x^3 + 5x + 7 = 0$, then find the value of:\ni) $\\alpha + \\beta + \\gamma$\nii) $\\alpha\\beta + \\beta\\gamma + \\gamma\\alpha$\niii) $\\alpha\\beta\\gamma$\niv) $\\frac{1}{\\alpha+\\beta} + \\frac{1}{\\beta+\\gamma} + \\frac{1}{\\gamma+\\alpha}$",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "i) 0, ii) 5/4, iii) -7/4, iv) -5/7",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_vqi9x0",
+      "text": "If $1, 2, 3$ be the roots of cubic equation $2x^3 + ax^2 - bx + c = 0$, then find $a, b, c$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "$a = -12, b = -22, c = -12$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_pzgmrt",
+      "text": "If the sum of the two roots of the equation $4x^3 + 16x^2 - 9x - 36 = 0$ is $0$, then roots are:",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "$-\\frac{3}{2}, \\frac{3}{2}, -4$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_03pqcx",
+      "text": "If $a, b, c$ are the roots of cubic equation $x^3 - x^2 + 1 = 0$, then find the value of $a^{-2} + b^{-2} + c^{-2}$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "0",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_dhsxkr",
+      "text": "If $1, 2, 3 \\& 4$ are the roots of the equation $x^4 + ax^3 + bx^2 + cx + d = 0$, then the value of $a + 2b + c = ?$",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "-24",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_z29qx9",
+      "text": "If $a+b+c > 0$ and equation $ax^2 + 2bx - 5c = 0$ has no real roots, then:",
+      "type": "mcq",
+      "options": [
+        "$a > 0, c < 0$",
+        "$a > 0, c > 0$",
+        "$a < 0, c < 0$",
+        "$a < 0, c > 0$"
+      ],
+      "correctAnswer": "$a > 0, c < 0$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_al9hbg",
+      "text": "If quadratic equation $ax^2 + bx + c = 0$ has no real roots, which may be false?",
+      "type": "mcq",
+      "options": [
+        "$a(a-b+c) > 0$",
+        "$c(a-b+c) > 0$",
+        "$b(a-b+c) > 0$",
+        "$(a+b+c)(a-b+c) > 0$"
+      ],
+      "correctAnswer": "$b(a-b+c) > 0$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_6ht6xc",
+      "text": "The graph of $y = ax^2 + bx + c$ is given such that $a < 0$, $b > 0$, $c > 0$, and roots are $\\alpha < 0 < \\beta$ with $|\\alpha| < \\beta$. Which of the following is (are) correct?\ni) $ab^3c^3 < 0$\nii) $ab < 0$\niii) $bc(4a + 2b + c) > 0$\niv) $ab(4a - 2b + c) > 0$\nv) $b^2 > 4(a^2 + ac)$\nvi) $ax^2 + bx + c > 0 \\quad \\forall x \\in (\\alpha, \\beta)$",
+      "type": "multiple_select",
+      "options": [
+        "i) $ab^3c^3 < 0$",
+        "ii) $ab < 0$",
+        "iii) $bc(4a + 2b + c) > 0$",
+        "iv) $ab(4a - 2b + c) > 0$",
+        "v) $b^2 > 4(a^2 + ac)$",
+        "vi) $ax^2 + bx + c > 0 \\quad \\forall x \\in (\\alpha, \\beta)$"
+      ],
+      "correctAnswer": [
+        "i) $ab^3c^3 < 0$",
+        "ii) $ab < 0$",
+        "vi) $ax^2 + bx + c > 0 \\quad \\forall x \\in (\\alpha, \\beta)$"
+      ],
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_xgz72v",
+      "text": "Given that $ax^2 + bx + c = 0$ has no real roots & $c > 0$, then:",
+      "type": "mcq",
+      "options": [
+        "$a > 0$",
+        "$a < 0$",
+        "$a + b + c > 0$",
+        "$a - b + c > 0$"
+      ],
+      "correctAnswer": "$a > 0$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_2kxh9n",
+      "text": "If $\\alpha, \\beta$ are the roots of the equation $x^2 - x - 1 = 0$, find the quadratic equation whose roots are $\\frac{1+\\alpha}{1-\\alpha}, \\frac{1+\\beta}{1-\\beta}$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "y^2 + 4y - 1 = 0",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_iv86vp",
+      "text": "If $\\alpha, \\beta$ are the roots of the equation $x^2 - x - 1 = 0$, find $\\frac{1+\\alpha}{1-\\alpha} + \\frac{1+\\beta}{1-\\beta}$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "-4",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_bevx62",
+      "text": "Find the value of $a$ for which one root of equation $(a-3)x^2 - 2ax + a - 4 = 0$ is smaller than $1$ & the other greater than $2$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "a in (3, 4)",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_zv09ca",
+      "text": "Find $a$ for which the quadratic equation $x^2 + 2(a-1)x + a + 5 = 0$ has exactly one root lie in the interval $(1, 3)$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "a in (-Inf, -8) U (-4/7, 1)",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_vidxjp",
+      "text": "Find the value of $a$ for which the roots of the quadratic equation $x^2 + 2(a-1)x + (a+5) = 0$ are such that one root is greater than $3$ & other root is smaller than $3$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "a < -8/7",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_xh5bo4",
+      "text": "Find the value of $m$ for which both roots of equation $x^2 - mx + 1 = 0$ are less than unity.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "m in (-Inf, -2]",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_abjbdn",
+      "text": "Find the value of $a$ for which the equation $4x^2 - 2x + a = 0$ has two roots lie in the interval $(-1, 1)$.",
+      "type": "numerical",
+      "options": [],
+      "correctAnswer": "a in [-6, 1/4]",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_zu9g8b",
+      "text": "If both the roots of the quadratic equation $x^2 - mx + 4 = 0$ are real & distinct & they lie in the interval $(1, 5)$, then $m$ lies in the interval:",
+      "type": "mcq",
+      "options": [
+        "$(5, 6)$",
+        "$(4, 5)$",
+        "$(3, 4)$",
+        "$(-5, -4)$"
+      ],
+      "correctAnswer": "$(4, 5)$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_6m5nep",
+      "text": "If the roots of equation $x^{2} + 2x + p = 0$ are real, then value of p:",
+      "type": "mcq",
+      "options": [
+        "$p \\ge 1$",
+        "$p \\le 1$",
+        "$p > 0$",
+        "None Of The Above"
+      ],
+      "correctAnswer": "$p \\le 1$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_ej3b9g",
+      "text": "If $\\tan\\alpha$ and $\\tan\\beta$ are the roots of the equation $x^2 - px + q = 0$, and $\\cot\\alpha$ and $\\cot\\beta$ are the roots of the equation $x^2 - rx + s = 0$, then find the value of $r \\cdot s$ in terms of $p$ and $q$.",
+      "type": "mcq",
+      "options": [
+        "$\\frac{p}{q^2}$",
+        "$\\frac{q}{p^2}$",
+        "$\\frac{p}{q}$",
+        "$\\frac{q}{p}$"
+      ],
+      "correctAnswer": "$\\frac{p}{q^2}$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_s9mx5p",
+      "text": "Let $\\alpha$ and $\\beta$ be the roots of $x^2 - px + r = 0$, and $\\frac{\\alpha}{2}$ and $2\\beta$ be the roots of $x^2 - qx + r = 0$. Find the value of $r$.",
+      "type": "mcq",
+      "options": [
+        "$\\frac{2}{9}(3p - 2q)(2q - p)$",
+        "$\\frac{2}{9}(2p - q)(2q - p)$",
+        "$\\frac{2}{9}(p - q)(2q - p)$",
+        "$\\frac{1}{9}(2p - q)(q - p)$"
+      ],
+      "correctAnswer": "$\\frac{2}{9}(2p - q)(2q - p)$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_ltf3ll",
+      "text": "If one root of the equation $81x^2 + kx + 256 = 0$ is the cube of the other, then the value of $k$ is:",
+      "type": "multiple_select",
+      "options": [
+        "$-300$",
+        "$300$",
+        "$-100$",
+        "$-200$"
+      ],
+      "correctAnswer": [
+        "$-300$",
+        "$300$"
+      ],
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_2ibamu",
+      "text": "The value of $a$ for which one root of $(a^2 - 5a + 3)x^2 + (3a - 1)x + 2 = 0$ is twice the other one is:",
+      "type": "mcq",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{1}{3}$",
+        "$-\\frac{2}{3}$",
+        "$\\frac{3}{2}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_3zf3ke",
+      "text": "If $\\lambda$ be the ratio of roots of the equation $3m^2x^2 + m(m-4)x + 2 = 0$, then the least value of $m$ for which $\\lambda + \\frac{1}{\\lambda} = 1$ is:",
+      "type": "mcq",
+      "options": [
+        "$4 - 3\\sqrt{2}$",
+        "$4 + 3\\sqrt{2}$",
+        "$2 - 3\\sqrt{2}$",
+        "$4 - 2\\sqrt{3}$"
+      ],
+      "correctAnswer": "$4 - 3\\sqrt{2}$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_6bpd5p",
+      "text": "The value of $\\lambda$ such that the sum of the squares of the roots of the quadratic equation $x^2 + (3-\\lambda)x + 2 - \\lambda = 0$ has the least value is:",
+      "type": "mcq",
+      "options": [
+        "$\\frac{15}{8}$",
+        "$1$",
+        "$\\frac{4}{9}$",
+        "$2$"
+      ],
+      "correctAnswer": "$2$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_o0crgv",
+      "text": "If one root of the quadratic equation $(1-m)x^2 + lx + 1 = 0$ with real coefficients is double the other root, then the maximum value of $m$ is:",
+      "type": "mcq",
+      "options": [
+        "$\\frac{8}{9}$",
+        "$\\frac{9}{8}$",
+        "$1$",
+        "$2$"
+      ],
+      "correctAnswer": "$\\frac{9}{8}$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_2ble7x",
+      "text": "Let $p, q \\in \\{1, 2, 3, 4\\}$. Then the number of quadratic equations of the form $px^2 + qx + 1 = 0$ having real roots is:",
+      "type": "mcq",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "correctAnswer": "$7$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_fqjvsi",
+      "text": "If $\\alpha$ and $\\beta$ are the roots of the equation $x^2 - 2px + q = 0$, and $\\gamma$ and $\\delta$ are the roots of $x^2 - 2rx + s = 0$, and if $\\alpha\\delta = \\beta\\gamma$, then $p^2 s$ is equal to:",
+      "type": "mcq",
+      "options": [
+        "$r^2 q$",
+        "$rq^2$",
+        "$p^2 q$",
+        "$r^2 s$"
+      ],
+      "correctAnswer": "$r^2 q$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_hg5qyl",
+      "text": "Let $\\alpha, \\beta$ be the roots of equation $px^2 + qx + r = 0$, $p \\neq 0$. If $p, q, r$ are in A.P. and $\\frac{1}{\\alpha} + \\frac{1}{\\beta} = 4$, then the value of $|\\alpha - \\beta|$ is:",
+      "type": "mcq",
+      "options": [
+        "$\\frac{\\sqrt{34}}{9}$",
+        "$\\frac{2\\sqrt{13}}{9}$",
+        "$\\frac{\\sqrt{11}}{9}$",
+        "$\\frac{2\\sqrt{17}}{9}$"
+      ],
+      "correctAnswer": "$\\frac{2\\sqrt{13}}{9}$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_uiz903",
+      "text": "Let $\\alpha$ and $\\beta$ be the roots of $x^2 - 6x - 2 = 0$. If $a_n = \\alpha^n - \\beta^n$ for $n \\ge 1$, then the value of $\\frac{a_{10} - 2a_8}{2a_9}$ is equal to:",
+      "type": "mcq",
+      "options": [
+        "$6$",
+        "$-6$",
+        "$3$",
+        "$-3$"
+      ],
+      "correctAnswer": "$3$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    },
+    {
+      "id": "q_1786910793821_o5za79",
+      "text": "If $\\alpha$ and $\\beta$ are the roots of the equation $x^2 + px + 1 = 0$, and $\\gamma, \\delta$ are the roots of the equation $x^2 + qx + 1 = 0$, then $(q^2 - p^2)$ is equal to:",
+      "type": "mcq",
+      "options": [
+        "$(\\alpha - \\gamma)(\\beta - \\gamma)(\\alpha + \\delta)(\\beta + \\delta)$",
+        "$(\\alpha + \\gamma)(\\beta + \\gamma)(\\alpha - \\delta)(\\beta - \\delta)$",
+        "$(\\alpha - \\gamma)(\\beta + \\gamma)(\\alpha + \\delta)(\\beta - \\delta)$",
+        "$(\\alpha - \\beta)(\\gamma - \\delta)(\\alpha + \\beta)(\\gamma + \\delta)$"
+      ],
+      "correctAnswer": "$(\\alpha - \\gamma)(\\beta - \\gamma)(\\alpha + \\delta)(\\beta + \\delta)$",
+      "positiveMarks": 4,
+      "negativeMarks": -1,
+      "hint": "",
+      "explanation": "",
+      "media": null
+    }
+  ]
+}

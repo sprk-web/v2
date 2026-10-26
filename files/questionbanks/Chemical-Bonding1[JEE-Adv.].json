@@ -1,0 +1,123 @@
+[
+  {
+    "question": "The total number of lone pairs of electrons in $N_2O_3$ is: [IIT Adv. 2015]",
+    "options": ["6", "7", "8", "9"],
+    "correct": 2
+  },
+  {
+    "question": "Among the following, the correct statement(s) is/are: [IIT Adv. 2017]\n(A) $Al(CH_3)_3$ has a three-center two-electron bond.\n(B) $B_2H_6$ has two-center two-electron bonds.\n(C) $AlCl_3$ has a three-center two-electron bond.\n(D) The hybridization of $B$ in $B_2H_6$ is $sp^2$.",
+    "options": ["A and B", "B and C", "A and C", "A, B and D"],
+    "correct": 0
+  },
+  {
+    "question": "The correct order of acid strength is: [IIT Adv. 2016]",
+    "options": [
+      "$Cl_2O_7 > SO_3 > P_4O_{10}$",
+      "$CO_2 > N_2O_5 > SO_3$",
+      "$Na_2O > MgO > Al_2O_3$",
+      "$K_2O > CaO > MgO$"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "The geometry of $XeOF_4$ by VSEPR theory is: [IIT Adv. 2015]",
+    "options": ["Trigonal bipyramidal", "Square pyramidal", "Square planar", "See-saw"],
+    "correct": 1
+  },
+  {
+    "question": "Based on Molecular Orbital Theory, the choice that shows the correct order of bond strength is: [IIT Adv. 2019]",
+    "options": [
+      "$O_2^{2-} > O_2^- > O_2$",
+      "$O_2 > O_2^- > O_2^{2-}$",
+      "$O_2^- > O_2 > O_2^{2-}$",
+      "$O_2 > O_2^{2-} > O_2^-$"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "The number of tetrahedral shapes among the following is: [IIT Adv. 2021]\n$SCl_2$, $O_3$, $ClF_3$, $SF_4$, $I_3^-$, $CO_3^{2-}$, $XeO_4$, $SO_4^{2-}$",
+    "options": ["1", "2", "3", "4"],
+    "correct": 1
+  },
+  {
+    "question": "Which of the following hydrogen bonds is the strongest? [IIT Adv. 2007]",
+    "options": ["$O-H\\cdots O$", "$O-H\\cdots F$", "$F-H\\cdots F$", "$N-H\\cdots N$"],
+    "correct": 2
+  },
+  {
+    "question": "The species having pyramidal shape is: [IIT Adv. 2010]",
+    "options": ["$SO_3$", "$BrF_3$", "$SiO_3^{2-}$", "$OSF_2$"],
+    "correct": 3
+  },
+  {
+    "question": "The linear species among the following is: [IIT Adv. 2010]",
+    "options": ["$NO_2^+$", "$NO_2$", "$NO_2^-$", "$O_3$"],
+    "correct": 0
+  },
+  {
+    "question": "According to Molecular Orbital Theory, which of the following is true for the $O_2^+$ species? [IIT Adv. 2012]",
+    "options": [
+      "Paramagnetic, bond order < $O_2$",
+      "Paramagnetic, bond order > $O_2$",
+      "Diamagnetic, bond order < $O_2$",
+      "Diamagnetic, bond order > $O_2$"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "The shape of $XeF_5^-$ is: [IIT Adv. 2014]",
+    "options": ["Pentagonal planar", "Trigonal bipyramidal", "Octahedral", "Distorted pentagonal bipyramidal"],
+    "correct": 0
+  },
+  {
+    "question": "The total number of compounds having at least one $B-B$ bond among $B_2H_6$, $B_3N_3H_6$, $B_4C$, $B_{12}$ is: [IIT Adv. 2018]",
+    "options": ["1", "2", "3", "4"],
+    "correct": 1
+  },
+  {
+    "question": "Which of the following contains an open-book structure? [IIT Adv. 2012]",
+    "options": ["$H_2O_2$", "$O_3$", "$CO_2$", "$N_2O$"],
+    "correct": 0
+  },
+  {
+    "question": "The number of $P-O-P$ bonds in cyclic metaphosphoric acid is: [IIT Adv. 2011]",
+    "options": ["2", "3", "4", "zero"],
+    "correct": 1
+  },
+  {
+    "question": "Identify the molecule that has the maximum dipole moment: [IIT Adv. 2014]",
+    "options": ["$NF_3$", "$NH_3$", "$CO_2$", "$CH_4$"],
+    "correct": 1
+  },
+  {
+    "question": "Among the following, the paramagnetic species is: [IIT Adv. 2016]",
+    "options": ["$B_2$", "$C_2$", "$N_2$", "$O_2^{2-}$"],
+    "correct": 0
+  },
+  {
+    "question": "The structure of $ICl_2^-$ is: [IIT Adv. 2015]",
+    "options": ["Linear", "Bent", "Trigonal planar", "See-saw"],
+    "correct": 0
+  },
+  {
+    "question": "The hybridization of atomic orbitals of nitrogen in $NO_2^+$, $NO_3^-$, and $NH_4^+$ are respectively: [IIT Adv. 2011]",
+    "options": [
+      "$sp$, $sp^2$, $sp^3$",
+      "$sp^2$, $sp$, $sp^3$",
+      "$sp^2$, $sp^3$, $sp$",
+      "$sp^3$, $sp$, $sp^2$"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Which of the following has the highest number of lone pairs associated with the central atom? [IIT Adv. 2013]",
+    "options": ["$XeF_4$", "$IF_5$", "$I_3^-$", "$ClF_3$"],
+    "correct": 2
+  },
+  {
+    "question": "Assuming $2s-2p$ mixing is NOT operative, the paramagnetic species among the following is: [IIT Adv. 2014]",
+    "options": ["$B_2$", "$C_2$", "$N_2$", "$O_2$"],
+    "correct": 1
+  }
+    ]
+  

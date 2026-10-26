@@ -1,0 +1,132 @@
+[
+  {
+    "question": "A ball is thrown vertically upwards from the top of a tower with a velocity of $20\\text{ m/s}$. The ball strikes the ground after $6\\text{ s}$. The height of the tower is (take $g = 10\\text{ m/s}^2$): [IIT Adv. 2011]",
+    "options": ["40 m", "60 m", "80 m", "100 m"],
+    "correct": 1
+  },
+  {
+    "question": "A rocket is moving in a gravity-free space with a constant acceleration of $2\\text{ m/s}^2$ along +x direction. The length of a chamber inside the rocket is $4\\text{ m}$. A ball is thrown from the left wall of the chamber towards the right wall with a speed of $0.3\\text{ m/s}$ relative to the rocket. At the same time, another ball is thrown from the right wall towards the left wall with a speed of $0.2\\text{ m/s}$ relative to the rocket. The time in seconds when the two balls meet is: [IIT Adv. 2014]",
+    "options": ["2 s", "4 s", "8 s", "10 s"],
+    "correct": 2
+  },
+  {
+    "question": "A projectile is given an initial velocity of $(\\hat{i} + 2\\hat{j})\\text{ m/s}$, where $\\hat{i}$ is along the ground and $\\hat{j}$ is along the vertical. If $g = 10\\text{ m/s}^2$, the equation of its trajectory is: [IIT Adv. 2013]",
+    "options": [
+      "$y = x - 5x^2$",
+      "$y = 2x - 5x^2$",
+      "$4y = 2x - 5x^2$",
+      "$4y = 2x - 25x^2$"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "A player kicks a football slanting upwards from the ground. Neglecting air resistance, the quantities that remain constant during the flight are: [IIT Adv. 2019]",
+    "options": [
+      "Vertical component of velocity and total mechanical energy",
+      "Horizontal component of velocity and total mechanical energy",
+      "Kinetic energy and potential energy",
+      "Horizontal component of velocity and vertical component of acceleration"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Airplanes A and B are flying with constant velocities in the same vertical plane at angles $30^\\circ$ and $60^\\circ$ with respect to the horizontal respectively. The speed of A is $100\\sqrt{3}\\text{ m/s}$. An observer in A finds B flying along a line perpendicular to the line of motion of A. If at $t = 0$, A is at a distance of $500\\text{ m}$ ahead of B, the time after which a collision could occur is: [IIT Adv. 2014]",
+    "options": ["5 s", "8 s", "10 s", "15 s"],
+    "correct": 0
+  },
+  {
+    "question": "From a tower of height $H$, a particle is thrown vertically upwards with a speed $u$. The time taken by the particle to hit the ground is $n$ times that taken by it to reach the highest point of its path. The relation between $H$, $u$, and $n$ is: [IIT Adv. 2014]",
+    "options": [
+      "$2gH = nu^2(n-2)$",
+      "$gH = nu^2(n-2)$",
+      "$2gH = n^2u^2(n-2)$",
+      "$gH = n^2u^2(n-2)$"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "A particle moves in the $xy$-plane with a constant acceleration $a$ directed along the negative $y$-axis. The equation of motion of the particle has the form $y = px - qx^2$, where $p$ and $q$ are positive constants. The velocity of the particle at the origin of coordinates is: [IIT Adv. 2016]",
+    "options": [
+      "$\\sqrt{\\frac{a(1+p^2)}{2q}}$",
+      "$\\sqrt{\\frac{a}{2q}}$",
+      "$\\sqrt{\\frac{ap^2}{2q}}$",
+      "$\\sqrt{\\frac{a(1+q^2)}{2p}}$"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "A ball is projected from the ground at an angle of $45^\\circ$ with the horizontal surface. It reaches a maximum height of $120\\text{ m}$ and returns to the ground. The horizontal range of the projectile is: [IIT Adv. 2010]",
+    "options": ["240 m", "360 m", "480 m", "600 m"],
+    "correct": 2
+  },
+  {
+    "question": "The displacement $x$ of a particle moving in one dimension under the action of a constant force is related to time $t$ by the equation $t = \\sqrt{x} + 3$, where $x$ is in meters and $t$ is in seconds. The displacement of the particle when its velocity is zero is: [IIT Adv. 2012]",
+    "options": ["0 m", "3 m", "6 m", "9 m"],
+    "correct": 0
+  },
+  {
+    "question": "A river is flowing from west to east at a speed of $5\\text{ m/min}$. A man on the south bank of the river, capable of swimming at $10\\text{ m/min}$ in still water, wants to swim across the river in the shortest time. He should swim in a direction: [IIT Adv. 2011]",
+    "options": ["Due North", "30° West of North", "30° East of North", "60° East of North"],
+    "correct": 0
+  },
+  {
+    "question": "A body is projected vertically upwards from the surface of the Earth with a velocity sufficient to carry it to infinity. The time taken by it to reach a height $h$ is proportional to: [IIT Adv. 2015]",
+    "options": ["$h^{1/2}$", "$h^{3/2}$", "$h$", "$h^2$"],
+    "correct": 1
+  },
+  {
+    "question": "A particle of mass $m$ moves on the $x$-axis as follows: it starts from rest at $t = 0$ from the point $x = 0$ and comes to rest at $t = 1$ at the point $x = 1$. No other information is available about its motion at intermediate times. If $\\alpha$ denotes the instantaneous acceleration of the particle, then: [IIT Adv. 2018]",
+    "options": [
+      "$\\alpha$ cannot remain positive for all time in the interval $0 \\le t \\le 1$",
+      "|$\\alpha$| cannot exceed 2 at any point in its path",
+      "$\\alpha$ must be component-wise zero at $t = 0.5$",
+      "$\\alpha$ must change sign exactly once during the motion"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "A particle is dropped from a height $h$. Another particle is projected vertically up from the ground at the same instant such that they meet at the midpoint of the height $h$. The initial velocity of the second particle is: [IIT Adv. 2013]",
+    "options": ["$\\sqrt{2gh}$", "$\\sqrt{gh}$", "$\\sqrt{gh/2}$", "$\\sqrt{3gh/2}$"],
+    "correct": 1
+  },
+  {
+    "question": "A boy throws a ball upwards with velocity $v_0 = 20\\text{ m/s}$. The wind imparts a constant horizontal acceleration of $4\\text{ m/s}^2$ to the left. The horizontal distance from the starting point where the ball lands back on the ground is (take $g = 10\\text{ m/s}^2$): [IIT Adv. 2017]",
+    "options": ["16 m", "32 m", "48 m", "64 m"],
+    "correct": 1
+  },
+  {
+    "question": "The velocity-time graph of a stone thrown vertically upward with an initial velocity of $30\\text{ m/s}$ is a straight line. The total distance covered by the stone in the first $4\\text{ s}$ of its motion is (take $g = 10\\text{ m/s}^2$): [IIT Adv. 2015]",
+    "options": ["45 m", "50 m", "55 m", "60 m"],
+    "correct": 1
+  },
+  {
+    "question": "A small block slides down a smooth inclined plane of inclination $\\theta$ starting from rest. Let $S_n$ be the distance travelled by the block in the time interval $t = n-1$ to $t = n$. Then the ratio $S_n / S_{n+1}$ is: [IIT Adv. 2016]",
+    "options": [
+      "$\\frac{2n-1}{2n}$",
+      "$\\frac{2n-1}{2n+1}$",
+      "$\\frac{2n+1}{2n-1}$",
+      "$\\frac{2n}{2n+1}$"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "A body starting from rest moves with uniform acceleration. The ratio of distance covered by the body as a function of time $t$ in successive equal time intervals is: [IIT Adv. 2012]",
+    "options": ["1 : 2 : 3 : 4", "1 : 3 : 5 : 7", "1 : 4 : 9 : 16", "1 : 1 : 1 : 1"],
+    "correct": 1
+  },
+  {
+    "question": "Two stones are thrown vertically upwards simultaneously from the same point on the ground with initial velocities $u_1 = 30\\text{ m/s}$ and $u_2 = 50\\text{ m/s}$. The maximum separation between them during their flight before the first stone hits the ground is (take $g = 10\\text{ m/s}^2$): [IIT Adv. 2019]",
+    "options": ["60 m", "80 m", "100 m", "120 m"],
+    "correct": 1
+  },
+  {
+    "question": "The position vector of a particle moving in the $xy$-plane is given by $\\vec{r} = (A\\sin\\omega t)\\hat{i} + (A\\cos\\omega t)\\hat{j}$. The path traced by the particle is: [IIT Adv. 2014]",
+    "options": ["A parabola", "An ellipse", "A circle", "A straight line"],
+    "correct": 2
+  },
+  {
+    "question": "A bullet fired into a target loses half of its velocity after penetrating $3\\text{ cm}$. How much further will it penetrate before coming to rest, assuming a constant resistive force? [IIT Adv. 2011]",
+    "options": ["1 cm", "2 cm", "3 cm", "4 cm"],
+    "correct": 0
+  }
+]

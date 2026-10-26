@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPRK-Web | Study Hub & Toolkit</title>
+    <link rel="icon" href="https://sprk-web.github.io/favicon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://sprk-web.github.io/favicon.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cyan: '#00f2fe',
+                            blue: '#4facfe',
+                            purple: '#7f00ff'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .brand-main {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #7f00ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-sub::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #00f2fe;
+            border-radius: 50%;
+            top: 25%;
+            right: -10px;
+            box-shadow: 0 0 8px #00f2fe, 0 0 15px #00f2fe;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .logo-underline {
+            width: 25px;
+            height: 3px;
+            background: linear-gradient(90deg, #00f2fe, #7f00ff);
+            margin-top: 2px;
+            border-radius: 2px;
+            box-shadow: 0 2px 6px rgba(0, 242, 254, 0.4);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .brand-logo-container:hover .logo-underline {
+            width: 100%;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        /* Custom Scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <link rel="stylesheet" href="/site-theme.css">
+    <script type="module" src="/js/site-theme.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+    <main class="flex-1 max-w-6xl w-full mx-auto px-6 py-12 flex flex-col items-center gap-16">
+        
+        <section class="w-full relative py-10 sm:py-16">
+            <div class="absolute -top-10 left-0 w-96 h-96 bg-gradient-to-tr from-cyan-500/10 via-indigo-500/10 to-purple-500/10 blur-3xl rounded-full -z-10 pointer-events-none"></div>
+            <p class="text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400">A focused study workspace</p>
+            <h1 class="mt-4 text-4xl sm:text-6xl font-black tracking-tight max-w-3xl leading-tight text-slate-900 dark:text-white">
+                Study, practice, and explore with <span id="hero-site-name" class="brand-main">SPRK-Web</span>
+            </h1>
+            <p class="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+                A thoughtfully organized collection of learning tools, interactive simulations, and resources.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+                <a href="#tools-section" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-xl shadow-lg shadow-indigo-500/25 transition-all duration-200 active:scale-95 flex items-center gap-2">
+                    <span>Explore tools</span>
+                    <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="tools-section" class="w-full flex flex-col gap-6 scroll-mt-24">
+            
+            <div class="w-full flex flex-col sm:flex-row gap-4 items-center justify-between">
+                <div class="w-full sm:max-w-md relative group">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                        <i data-lucide="search" class="w-4 h-4"></i>
+                    </div>
+                    <input type="text" id="search-filter" placeholder="Search tools or features... (Press '/' to focus)" class="w-full p-3 pl-11 pr-20 border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900 shadow-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/80 focus:border-transparent dark:text-slate-100 transition duration-200 text-sm">
+                    
+                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center gap-1.5">
+                        <button id="clear-search" class="hidden p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition rounded-lg">
+                            <i data-lucide="x" class="w-4 h-4"></i>
+                        </button>
+                        <kbd class="hidden sm:inline-block text-[10px] font-mono text-slate-400 dark:text-slate-500 border border-slate-200 dark:border-slate-800 rounded-md px-1.5 py-0.5 bg-slate-50 dark:bg-slate-950">⌘K</kbd>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 overflow-x-auto max-w-full no-scrollbar self-start sm:self-auto">
+                    <button data-category="all" class="category-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white shadow-xs transition active:scale-95">All</button>
+                    <button data-category="Resources" class="category-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition active:scale-95">Resources</button>
+                    <button data-category="Assessment" class="category-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition active:scale-95">Assessment</button>
+                    <button data-category="Productivity" class="category-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition active:scale-95">Productivity</button>
+                </div>
+            </div>
+
+            <div id="tools-grid" class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                </div>
+
+            <div id="no-results" class="hidden text-center py-16 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl w-full max-w-md mx-auto shadow-xs my-6">
+                <div class="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-400 flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="search-x" class="w-5 h-5 opacity-80"></i>
+                </div>
+                <h4 class="text-sm font-bold text-slate-800 dark:text-slate-200">No matching tools found</h4>
+                <p class="text-xs text-slate-400 mt-1 max-w-xs mx-auto px-4 leading-relaxed">Try adjusting your search criteria or switching selected categories.</p>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="mt-auto border-t border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md py-6 transition-colors">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+            <div>
+                © <span id="year"></span> <strong id="footer-brand" class="text-slate-700 dark:text-slate-300 font-semibold">SPRK-Web</strong>. Learning tools for curious minds.
+            </div>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hover:text-indigo-500 transition-colors flex items-center gap-1 cursor-pointer">
+                <span>Back to top</span>
+                <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { SITE_CONFIG } from './config.js';
+        // -------------------------------------------------------------------
+        // 1. Data Store (Tools Array)
+        // -------------------------------------------------------------------
+        const toolsData = [
+            {
+                id: 'pomodoro',
+                title: 'Focus Timer',
+                description: 'Customizable Pomodoro timer with ambient sounds to maximize studying flow.',
+                url: './tools/timer/',
+                icon: 'timer',
+                category: 'Productivity',
+                badge: 'Popular',
+                status: 'active'
+            },
+            {
+                id: 'simulator',
+                title: 'Simulator',
+                description: 'Explore interactive physics models or publish your own.',
+                url: './simulator/',
+                icon: 'atom',
+                category: 'Resources',
+                badge: 'Interactive',
+                status: 'active'
+            },
+            {
+                id: 'library',
+                title: 'Resource Library',
+                description: 'Access curated documents, study links, media assets, and essential learning files.',
+                url: './tools/library/',
+                icon: 'folder-open',
+                category: 'Resources',
+                badge: 'Learn and Learn',
+                status: 'active'
+            },
+            {
+                id: 'test-gen',
+                title: 'Custom Test Editor And Viewer',
+                description: 'Generate practice quizzes and mock exams tailored to test your knowledge.',
+                url: './test/',
+                icon: 'file-check-2',
+                category: 'Assessment',
+                badge: 'Interactive',
+                status: 'active'
+            },
+            {
+                id: 'board',
+                title: 'Interactive Smartboard',
+                description: 'Enjoy a smooth writing experience digitally.',
+                url: './tools/whiteboard/v5/',
+                icon: 'presentation',
+                category: 'Productivity',
+                badge: 'Interactive',
+                status: 'active'
+            },
+            {
+                id: 'flashcards',
+                title: 'Spaced Flashcards',
+                description: 'Master key terms and algorithms using intelligent spaced repetition.',
+                url: '#',
+                icon: 'layers',
+                category: 'Assessment',
+                badge: 'Planned',
+                status: 'coming-soon'
+            }
+        ];
+
+        let currentCategory = 'all';
+
+        // -------------------------------------------------------------------
+        // 2. Theme Engine
+        // -------------------------------------------------------------------
+        document.getElementById('site-name').textContent = SITE_CONFIG.name;
+        document.getElementById('hero-site-name').textContent = SITE_CONFIG.name;
+        const logoUrl = new URL(SITE_CONFIG.logo, import.meta.url).href;
+        document.querySelector('link[rel="icon"]').href = logoUrl;
+        document.querySelector('link[rel="apple-touch-icon"]').href = logoUrl;
+        document.getElementById('footer-brand').textContent = SITE_CONFIG.name;
+        document.title = `${SITE_CONFIG.name} | Study Hub & Toolkit`;
+
+        // -------------------------------------------------------------------
+        // 3. UI Renderer
+        // -------------------------------------------------------------------
+        function renderTools(searchQuery = '') {
+            const grid = document.getElementById('tools-grid');
+            const noResults = document.getElementById('no-results');
+            grid.innerHTML = '';
+
+            const filterTerm = searchQuery.trim().toLowerCase();
+            let count = 0;
+
+            toolsData.forEach(tool => {
+                const matchesCategory = currentCategory === 'all' || tool.category === currentCategory;
+                const matchesSearch = !filterTerm || 
+                    tool.title.toLowerCase().includes(filterTerm) || 
+                    tool.description.toLowerCase().includes(filterTerm) ||
+                    tool.category.toLowerCase().includes(filterTerm);
+
+                if (matchesCategory && matchesSearch) {
+                    count++;
+                    grid.appendChild(createToolCard(tool));
+                }
+            });
+
+            noResults.classList.toggle('hidden', count > 0);
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function createToolCard(tool) {
+            const card = document.createElement('div');
+            const isComingSoon = tool.status === 'coming-soon';
+
+            card.className = `w-full p-5 bg-white dark:bg-slate-900 border rounded-2xl flex flex-col justify-between transition-all duration-200 group ${
+                isComingSoon 
+                    ? 'opacity-60 border-slate-200 dark:border-slate-800/60 cursor-not-allowed' 
+                    : 'border-slate-200 dark:border-slate-800/80 hover:border-indigo-500/50 dark:hover:border-indigo-500/40 hover:-translate-y-1 shadow-xs hover:shadow-md'
+            }`;
+
+            card.innerHTML = `
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold tracking-wider px-2 py-0.5 rounded-md border select-none text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 border-indigo-100 dark:border-indigo-900/30 uppercase">
+                            ${tool.category}
+                        </span>
+                        ${tool.badge ? `
+                            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full ${
+                                isComingSoon 
+                                    ? 'bg-slate-100 dark:bg-slate-800 text-slate-500' 
+                                    : 'bg-amber-500/10 text-amber-500'
+                            }">
+                                ${tool.badge}
+                            </span>
+                        ` : ''}
+                    </div>
+
+                    <div class="flex items-start gap-3.5 mb-3">
+                        <div class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shrink-0">
+                            <i data-lucide="${tool.icon}" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                                ${tool.title}
+                            </h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                                ${tool.description}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex justify-end">
+                    ${isComingSoon ? `
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-slate-400 select-none">
+                            <span>Unavailable</span>
+                            <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                        </span>
+                    ` : `
+                        <a href="${tool.url}" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800/80 rounded-xl border border-slate-200/80 dark:border-slate-700/60 hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:text-white dark:hover:text-white hover:border-transparent transition-all duration-200 active:scale-95">
+                            <span>Launch Tool</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+                    `}
+                </div>
+            `;
+
+            return card;
+        }
+
+        // -------------------------------------------------------------------
+        // 4. Global Event Handlers
+        // -------------------------------------------------------------------
+        window.addEventListener('DOMContentLoaded', () => {
+            renderTools();
+
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            const searchInput = document.getElementById('search-filter');
+            const clearSearchBtn = document.getElementById('clear-search');
+
+            searchInput.addEventListener('input', (e) => {
+                const val = e.target.value;
+                clearSearchBtn.classList.toggle('hidden', !val);
+                renderTools(val);
+            });
+
+            clearSearchBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                clearSearchBtn.classList.add('hidden');
+                renderTools('');
+                searchInput.focus();
+            });
+
+            // Category filter listener
+            document.querySelectorAll('.category-filter-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.category-filter-btn').forEach(btn => {
+                        btn.className = 'category-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition active:scale-95';
+                    });
+
+                    button.className = 'category-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white shadow-xs transition active:scale-95';
+                    currentCategory = button.getAttribute('data-category');
+                    renderTools(searchInput.value);
+                });
+            });
+
+            // Global Keyboard Shortcuts
+            window.addEventListener('keydown', (e) => {
+                if ((e.key === '/' || (e.key === 'k' && (e.metaKey || e.ctrlKey))) && document.activeElement !== searchInput) {
+                    e.preventDefault();
+                    searchInput.focus();
+                } else if (e.key === 'Escape' && document.activeElement === searchInput) {
+                    searchInput.value = '';
+                    clearSearchBtn.classList.add('hidden');
+                    renderTools('');
+                    searchInput.blur();
+                }
+            });
+        }, { once: true });
+    </script>
+</body>
+</html>

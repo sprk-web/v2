@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | SPRK-Web</title>
+    <link rel="icon" href="https://sprk-web.github.io/favicon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://sprk-web.github.io/favicon.png">
+    <link rel="shortcut icon" href="https://sprk-web.github.io/favicon.png" type="image/png">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .brand-logo-container {
+            position: relative;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .brand-main {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #7f00ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-sub {
+            position: relative;
+        }
+
+        .brand-sub::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #00f2fe;
+            border-radius: 50%;
+            top: 25%;
+            right: -10px;
+            box-shadow: 0 0 8px #00f2fe, 0 0 15px #00f2fe;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .logo-underline {
+            width: 25px;
+            height: 3px;
+            background: linear-gradient(90deg, #00f2fe, #7f00ff);
+            margin-top: 2px;
+            border-radius: 2px;
+            box-shadow: 0 2px 6px rgba(0, 242, 254, 0.4);
+            transition: width 0.4s ease;
+        }
+
+        .brand-logo-container:hover .logo-underline {
+            width: 100%;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        /* Game Board Area Styles */
+        #game-canvas {
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+
+        .glitch-target {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            animation: target-spawn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes target-spawn {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+    </style>
+    <link rel="stylesheet" href="/site-theme.css">
+    <script type="module" src="/js/site-theme.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300 min-h-screen flex flex-col antialiased select-none">
+
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur sticky top-0 z-50 w-full backdrop-saturate-150">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center w-full">
+            <div class="brand-logo-container" onclick="location.href='/'">
+                <div class="flex items-center text-xl font-black uppercase tracking-wider select-none">
+                    <span class="brand-main">Sprk</span>
+                    <span class="brand-sub text-slate-800 dark:text-white font-light ml-0.5">-Web</span>
+                </div>
+                <div class="logo-underline"></div>
+            </div>
+
+            <button id="theme-toggle" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/60 shadow-xs cursor-pointer active:scale-95 transition" aria-label="Toggle theme">
+                <i id="theme-icon" data-lucide="moon" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-4xl w-full mx-auto px-6 py-12 flex flex-col justify-center items-center">
+        
+        <div id="error-view" class="w-full max-w-md text-center space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div class="space-y-3">
+                <span class="px-3 py-1 bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 rounded-full text-xs font-semibold tracking-wide border border-rose-100 dark:border-rose-900/30 inline-block">Error Code: 404</span>
+                <h1 class="text-7xl font-black tracking-tight text-slate-900 dark:text-white">Lost in Space?</h1>
+                <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xs mx-auto">The resource map you requested has disconnected or drifted into unknown sectors.</p>
+            </div>
+
+            <div class="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-lg transition-all duration-300">
+                <div class="p-3 bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 rounded-2xl w-fit mb-4 mx-auto">
+                    <i data-lucide="terminal" class="w-6 h-6 animate-pulse"></i>
+                </div>
+                <h3 class="text-base font-bold text-slate-900 dark:text-white mb-1">Detecting System Anomaly</h3>
+                <p class="text-xs text-slate-400 dark:text-slate-500 mb-5 leading-relaxed">Fix the connection sequence loops manually to bypass the routing error.</p>
+                <button onclick="bootGlitchGame()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs tracking-wider uppercase rounded-xl shadow-md shadow-indigo-600/10 active:scale-[0.98] transition cursor-pointer">
+                    Initialize Protocol Hack
+                </button>
+            </div>
+
+            <div>
+                <button onclick="location.href='/'" class="text-xs font-bold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 flex items-center gap-1.5 transition mx-auto uppercase tracking-wider cursor-pointer">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Escape to Home
+                </button>
+            </div>
+        </div>
+
+        <div id="game-view" class="hidden w-full max-w-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative transition-all animate-in zoom-in-95 duration-300">
+            
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center gap-2">
+                    <span class="px-3 py-1 bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 rounded-xl text-xs font-bold border border-amber-100 dark:border-amber-900/20 flex items-center gap-1">
+                        <i data-lucide="hourglass" class="w-3.5 h-3.5 animate-spin"></i> <span id="timer-display">15</span>s
+                    </span>
+                    <span class="px-3 py-1 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-xl text-xs font-bold border border-indigo-100 dark:border-indigo-900/20">
+                        Cleared: <span id="score-display">0</span>/10
+                    </span>
+                </div>
+                <button onclick="abortGame()" class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 uppercase font-bold tracking-wider transition cursor-pointer">Abort</button>
+            </div>
+
+            <div id="game-canvas" class="w-full h-72 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800/80 shadow-inner relative flex items-center justify-center">
+                <div id="game-intro-text" class="text-center text-xs text-slate-400 dark:text-slate-500 pointer-events-none p-4 max-w-xs leading-relaxed">
+                    Tap the moving hyper-glitch energy node nodes instantly as they phase across space matrix coordinates.
+                </div>
+            </div>
+
+            <div class="mt-4 text-center text-[10px] text-slate-400 dark:text-slate-500 tracking-wide">
+                System bypass interface connection protocols active. Mode: Fast Sync.
+            </div>
+        </div>
+
+        <div id="game-summary" class="hidden w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 text-center shadow-xl space-y-6 animate-in scale-in duration-300">
+            <div id="status-icon-box" class="w-20 h-20 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto shadow-inner relative">
+                <i id="summary-icon" data-lucide="check-circle" class="w-10 h-10"></i>
+            </div>
+            <div>
+                <h2 id="summary-headline" class="text-2xl font-black text-slate-900 dark:text-white mb-1">Patch Complete!</h2>
+                <p id="summary-subtext" class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Terminal system coordinates successfully recalibrated back to operational grid.</p>
+            </div>
+            <div class="p-4 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800 flex justify-between items-center text-left">
+                <div>
+                    <span class="text-[10px] font-bold tracking-wider text-slate-400 uppercase block">Terminal Bypass Log</span>
+                    <span id="summary-meta-text" class="text-xs font-bold text-slate-700 dark:text-slate-300">Status code matrix recovered</span>
+                </div>
+                <i data-lucide="shield-check" class="w-5 h-5 text-indigo-500"></i>
+            </div>
+            <button id="summary-action-btn" onclick="location.href='/'" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm tracking-wide rounded-xl transition shadow-lg shadow-indigo-600/20 active:scale-[0.98] cursor-pointer">
+                Return to Core Base
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        // -------------------------------------------------------------------
+        // 1. Light / Dark Theme Environment Management 
+        // -------------------------------------------------------------------
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            updateThemeIcon(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            updateThemeIcon(false);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeIcon(isDark);
+        });
+
+        function updateThemeIcon(isDark) {
+            themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        // -------------------------------------------------------------------
+        // 2. Mini Game State Processing Logic Engine Loop
+        // -------------------------------------------------------------------
+        let gameScore = 0;
+        let gameTimeLeft = 15;
+        let gameInterval = null;
+        let targetTimeout = null;
+        const scoreTargetGoal = 10;
+        
+        const gameCanvas = document.getElementById('game-canvas');
+        const scoreDisplay = document.getElementById('score-display');
+        const timerDisplay = document.getElementById('timer-display');
+
+        function bootGlitchGame() {
+            document.getElementById('error-view').classList.add('hidden');
+            document.getElementById('game-view').classList.remove('hidden');
+            
+            gameScore = 0;
+            gameTimeLeft = 15;
+            scoreDisplay.innerText = gameScore;
+            timerDisplay.innerText = gameTimeLeft;
+            
+            document.getElementById('game-intro-text').classList.remove('hidden');
+
+            // Start system operations clock metrics countdown
+            gameInterval = setInterval(() => {
+                gameTimeLeft--;
+                timerDisplay.innerText = gameTimeLeft;
+                
+                if (gameTimeLeft <= 0) {
+                    endGame(false);
+                }
+            }, 1000);
+
+            spawnGlitchTarget();
+        }
+
+        function spawnGlitchTarget() {
+            // Clean out old nodes instantly
+            const oldTarget = gameCanvas.querySelector('.glitch-target');
+            if (oldTarget) oldTarget.remove();
+
+            if (gameScore >= scoreTargetGoal || gameTimeLeft <= 0) return;
+
+            document.getElementById('game-intro-text').classList.add('hidden');
+
+            const targetBtn = document.createElement('button');
+            targetBtn.className = "glitch-target w-8 h-8 rounded-xl bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-600/50 border border-white/20 flex items-center justify-center text-white cursor-pointer active:scale-90 transition-transform duration-100";
+            targetBtn.innerHTML = `<i data-lucide="zap" class="w-4 h-4 fill-current"></i>`;
+            
+            // Generate valid random location inside bounding dimensions bounds
+            const padding = 20;
+            const maxX = gameCanvas.clientWidth - padding * 2;
+            const maxY = gameCanvas.clientHeight - padding * 2;
+            
+            const randomX = Math.floor(Math.random() * maxX) + padding;
+            const randomY = Math.floor(Math.random() * maxY) + padding;
+            
+            targetBtn.style.left = `${randomX}px`;
+            targetBtn.style.top = `${randomY}px`;
+            
+            targetBtn.onclick = (e) => {
+                e.stopPropagation();
+                gameScore++;
+                scoreDisplay.innerText = gameScore;
+                
+                if (gameScore >= scoreTargetGoal) {
+                    endGame(true);
+                } else {
+                    clearTimeout(targetTimeout);
+                    spawnGlitchTarget();
+                }
+            };
+
+            gameCanvas.appendChild(targetBtn);
+            if (window.lucide) lucide.createIcons();
+
+            // Setup speed loop scaling adjustments dynamically depending on performance advancement tracks
+            const spawnVelocityDuration = Math.max(600, 1200 - (gameScore * 65)); 
+            targetTimeout = setTimeout(spawnGlitchTarget, spawnVelocityDuration);
+        }
+
+        function endGame(isVictory) {
+            clearInterval(gameInterval);
+            clearTimeout(targetTimeout);
+            
+            // Remove lingering game entity blocks components
+            const lingeringTarget = gameCanvas.querySelector('.glitch-target');
+            if (lingeringTarget) lingeringTarget.remove();
+
+            document.getElementById('game-view').classList.add('hidden');
+            document.getElementById('game-summary').classList.remove('hidden');
+
+            const iconBox = document.getElementById('status-icon-box');
+            const iconEl = document.getElementById('summary-icon');
+            const headline = document.getElementById('summary-headline');
+            const subtext = document.getElementById('summary-subtext');
+            const metaText = document.getElementById('summary-meta-text');
+            const actionBtn = document.getElementById('summary-action-btn');
+
+            if (isVictory) {
+                iconBox.className = "w-20 h-20 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto shadow-inner relative";
+                iconEl.setAttribute('data-lucide', 'check-circle');
+                headline.innerText = "Patch Complete!";
+                subtext.innerText = "Terminal interface coordinates successfully recalibrated back to the operational grid layout frameworks.";
+                metaText.innerText = "All link nodes resolved perfectly.";
+                actionBtn.innerText = "Return to Core Base";
+                actionBtn.onclick = () => location.href = '/';
+            } else {
+                iconBox.className = "w-20 h-20 bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 rounded-full flex items-center justify-center mx-auto shadow-inner relative";
+                iconEl.setAttribute('data-lucide', 'x-circle');
+                headline.innerText = "Protocol Overload";
+                subtext.innerText = "The glitch node sequence cycle timed out before total connection recovery could verify.";
+                metaText.innerText = `Cleared only ${gameScore} of ${scoreTargetGoal} targets.`;
+                actionBtn.innerText = "Retry Protocol Sync";
+                actionBtn.onclick = () => {
+                    document.getElementById('game-summary').classList.add('hidden');
+                    bootGlitchGame();
+                };
+            }
+            
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function abortGame() {
+            clearInterval(gameInterval);
+            clearTimeout(targetTimeout);
+            location.reload();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+        }, { once: true });
+    </script>
+</body>
+</html>

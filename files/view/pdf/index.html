@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPRK-Web | PDF Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Desktop Container Simulation */
+.force-desktop-iframe {
+    width: 200% !important;
+    height: 200% !important;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+}
+        
+        .brand-logo-container {
+            position: relative;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .brand-main {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #7f00ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-sub {
+            position: relative;
+        }
+
+        .brand-sub::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #00f2fe;
+            border-radius: 50%;
+            top: 25%;
+            right: -10px;
+            box-shadow: 0 0 8px #00f2fe, 0 0 15px #00f2fe;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .logo-underline {
+            width: 25px;
+            height: 3px;
+            background: linear-gradient(90deg, #00f2fe, #7f00ff);
+            margin-top: 2px;
+            border-radius: 2px;
+            box-shadow: 0 2px 6px rgba(0, 242, 254, 0.4);
+            transition: width 0.4s ease;
+        }
+
+        .brand-logo-container:hover .logo-underline {
+            width: 100%;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+    <link rel="stylesheet" href="/site-theme.css">
+    <script type="module" src="/js/site-theme.js"></script>
+</head>
+<body class="bg-slate-900 h-screen w-screen overflow-hidden flex flex-col font-sans antialiased text-slate-200">
+
+    <header class="border-b border-slate-800 bg-slate-900/70 backdrop-blur sticky top-0 z-50 shrink-0">
+            <div class="flex items-center space-x-2">
+                <button id="toggle-board-btn" title="Toggle Whiteboard (Alt+W)" class="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium shadow transition-all active:scale-95">
+                    <i data-lucide="presentation" class="w-4 h-4"></i>
+                    <span id="toggle-board-text">Whiteboard</span>
+                </button>
+            </div>
+    </header>
+
+    <main id="workspace" class="flex-1 flex flex-col lg:flex-row overflow-hidden relative w-full bg-slate-950">
+        
+        <section id="pdf-container" class="h-1/2 lg:h-full w-full transition-all duration-75 p-2 sm:p-4 flex flex-col min-h-[200px]">
+            <div class="w-full h-full rounded-xl overflow-hidden border border-slate-800 bg-slate-900 shadow-inner flex flex-col">
+                <div class="bg-slate-800/40 border-b border-slate-800 px-3 py-2 flex items-center justify-between text-xs text-slate-400 shrink-0">
+                    <span class="flex items-center gap-2 truncate max-w-[60%]">
+                        <i data-lucide="file-text" class="w-3.5 h-3.5 text-indigo-400 shrink-0"></i>
+                        <span id="pdf-name" class="truncate">No Document Loaded</span>
+                    </span>
+                    <div class="flex items-center gap-2">
+                        <button id="fallback-viewer-btn" class="hover:text-white transition hidden text-xs flex items-center gap-1 bg-slate-800 hover:bg-slate-700 px-2 py-0.5 rounded border border-slate-700" title="Switch to Native Browser Viewer">
+                            <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                            <span>Direct View</span>
+                        </button>
+                        <a id="open-external-btn" href="#" target="_blank" class="hover:text-white transition hidden" title="Open PDF Direct">
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-1 relative w-full h-full">
+                    <iframe id="pdf-viewer" class="w-full h-full border-none hidden" src=""></iframe>
+                    <div id="pdf-loading" class="absolute inset-0 w-full h-full flex flex-col items-center justify-center space-y-3 text-slate-400 p-4 text-center">
+                        <i data-lucide="loader-2" class="w-8 h-8 animate-spin text-indigo-500"></i>
+                        <p class="text-sm">Loading document...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="resize-divider" title="Drag to resize | Double-click to reset (50/50)" class="h-2 w-full lg:h-full lg:w-2 bg-slate-800 hover:bg-indigo-500 cursor-row-resize lg:cursor-col-resize shrink-0 transition-colors z-20 hidden items-center justify-center touch-none">
+            <div class="h-1 w-8 lg:h-8 lg:w-1 bg-slate-600 rounded"></div>
+        </div>
+
+        <section id="whiteboard-container" class="h-1/2 lg:h-full w-full lg:w-0 hidden bg-slate-900 border-t lg:border-t-0 lg:border-l border-slate-800 flex flex-col transition-all duration-75 select-none min-h-[250px] p-2 sm:p-4">
+            <div class="w-full h-full rounded-xl overflow-hidden border border-slate-800 bg-slate-900 shadow-inner">
+                <iframe id="whiteboard-iframe" class="w-full h-full border-none bg-white rounded-lg" src="https://sprk-web.github.io/tools/whiteboard/v5/"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        const BASE_PDF_URL = "https://sprk-web.github.io/files/pdf/";
+
+        // Elements
+        const pdfViewer = document.getElementById('pdf-viewer');
+        const pdfLoading = document.getElementById('pdf-loading');
+        const pdfNameText = document.getElementById('pdf-name');
+        const openExternalBtn = document.getElementById('open-external-btn');
+        const fallbackViewerBtn = document.getElementById('fallback-viewer-btn');
+        const toggleBoardBtn = document.getElementById('toggle-board-btn');
+        const workspace = document.getElementById('workspace');
+        const pdfContainer = document.getElementById('pdf-container');
+        const whiteboardContainer = document.getElementById('whiteboard-container');
+        const whiteboardIframe = document.getElementById('whiteboard-iframe');
+        const resizeDivider = document.getElementById('resize-divider');
+
+        // Layout State
+        let isBoardOpen = false;
+        let isResizing = false;
+        let defaultWidthPercent = 40; 
+        let rawPdfUrl = "";
+
+        function loadPdfFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const pdfPath = urlParams.get('path');
+            // Add inside your loadPdfFromUrl or init function
+if (window.innerWidth < 1024) {
+    // Forces iframe to render desktop dimensions then scales down to fit viewport
+    pdfViewer.classList.add('force-desktop-iframe');
+};
+
+            if (pdfPath) {
+                rawPdfUrl = `${BASE_PDF_URL}${pdfPath}`;
+                const googleViewerUrl = `https://docs.google.com/gview?url=${encodeURIComponent(rawPdfUrl)}&embedded=true`;
+                
+                pdfViewer.src = googleViewerUrl;
+                
+                let loaded = false;
+                pdfViewer.onload = () => {
+                    loaded = true;
+                    pdfLoading.classList.add('hidden');
+                    pdfViewer.classList.remove('hidden');
+                };
+
+                // Fallback UI helper after a timeout if Google docs viewer hangs
+                setTimeout(() => {
+                    if (!loaded) {
+                        fallbackViewerBtn.classList.remove('hidden');
+                    }
+                }, 4000);
+                
+                pdfNameText.textContent = pdfPath;
+                openExternalBtn.href = rawPdfUrl;
+                openExternalBtn.classList.remove('hidden');
+                fallbackViewerBtn.classList.remove('hidden');
+            } else {
+                pdfLoading.innerHTML = `
+                    <i data-lucide="alert-circle" class="w-8 h-8 text-amber-500"></i>
+                    <p class="text-sm text-amber-400">No PDF specified. Append <code class="bg-slate-800 px-1 rounded text-white text-xs">?path=filename.pdf</code> to the URL.</p>
+                `;
+                lucide.createIcons();
+                pdfNameText.textContent = "Error Loading Path";
+            }
+        }
+
+        // QoL: Switch directly to browser native viewer
+        fallbackViewerBtn.addEventListener('click', () => {
+            if (rawPdfUrl) {
+                pdfViewer.src = rawPdfUrl;
+                pdfLoading.classList.add('hidden');
+                pdfViewer.classList.remove('hidden');
+            }
+        });
+
+        // Toggle Whiteboard
+        function toggleWhiteboard() {
+            isBoardOpen = !isBoardOpen;
+            
+            if (isBoardOpen) {
+                if (window.innerWidth >= 1024) {
+                    pdfContainer.style.width = `${100 - defaultWidthPercent}%`;
+                    whiteboardContainer.style.width = `${defaultWidthPercent}%`;
+                    pdfContainer.style.height = '100%';
+                    whiteboardContainer.style.height = '100%';
+                } else {
+                    pdfContainer.style.height = '50%';
+                    whiteboardContainer.style.height = '50%';
+                    pdfContainer.style.width = '100%';
+                    whiteboardContainer.style.width = '100%';
+                }
+                
+                whiteboardContainer.classList.remove('hidden');
+                resizeDivider.classList.remove('hidden');
+                resizeDivider.classList.add('flex');
+            } else {
+                pdfContainer.style.width = '100%';
+                pdfContainer.style.height = '100%';
+                whiteboardContainer.style.width = '0%';
+                whiteboardContainer.style.height = '0%';
+                whiteboardContainer.classList.add('hidden');
+                resizeDivider.classList.add('hidden');
+                resizeDivider.classList.remove('flex');
+            }
+        }
+
+        toggleBoardBtn.addEventListener('click', toggleWhiteboard);
+
+        // QoL Shortcut: Alt + W to toggle whiteboard
+        document.addEventListener('keydown', (e) => {
+            if (e.altKey && (e.key === 'w' || e.key === 'W')) {
+                e.preventDefault();
+                toggleWhiteboard();
+            }
+        });
+
+        // Drag Resizer Functionality
+        const startResize = (e) => {
+            isResizing = true;
+            document.body.classList.add('select-none');
+            
+            // Fix cursor styling during drag
+            if (window.innerWidth >= 1024) {
+                document.body.style.cursor = 'col-resize';
+            } else {
+                document.body.style.cursor = 'row-resize';
+            }
+
+            pdfViewer.style.pointerEvents = 'none';
+            whiteboardIframe.style.pointerEvents = 'none';
+        };
+
+        const handleResize = (e) => {
+            if (!isResizing) return;
+
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+            if (window.innerWidth >= 1024) {
+                const containerWidth = workspace.clientWidth;
+                let whiteboardWidthPx = containerWidth - clientX;
+                let whiteboardWidthPercent = (whiteboardWidthPx / containerWidth) * 100;
+
+                if (whiteboardWidthPercent > 15 && whiteboardWidthPercent < 80) {
+                    defaultWidthPercent = whiteboardWidthPercent;
+                    whiteboardContainer.style.width = `${whiteboardWidthPercent}%`;
+                    pdfContainer.style.width = `${100 - whiteboardWidthPercent}%`;
+                }
+            } else {
+                const containerHeight = workspace.clientHeight;
+                let whiteboardHeightPx = containerHeight - clientY;
+                let whiteboardHeightPercent = (whiteboardHeightPx / containerHeight) * 100;
+
+                if (whiteboardHeightPercent > 20 && whiteboardHeightPercent < 80) {
+                    whiteboardContainer.style.height = `${whiteboardHeightPercent}%`;
+                    pdfContainer.style.height = `${100 - whiteboardHeightPercent}%`;
+                }
+            }
+        };
+
+        const stopResize = () => {
+            if (isResizing) {
+                isResizing = false;
+                document.body.classList.remove('select-none');
+                document.body.style.cursor = '';
+                pdfViewer.style.pointerEvents = 'auto';
+                whiteboardIframe.style.pointerEvents = 'auto';
+            }
+        };
+
+        // QoL: Double Click divider to split workspace evenly (50/50)
+        resizeDivider.addEventListener('dblclick', () => {
+            defaultWidthPercent = 50;
+            if (window.innerWidth >= 1024) {
+                pdfContainer.style.width = '50%';
+                whiteboardContainer.style.width = '50%';
+            } else {
+                pdfContainer.style.height = '50%';
+                whiteboardContainer.style.height = '50%';
+            }
+        });
+
+        resizeDivider.addEventListener('mousedown', startResize);
+        resizeDivider.addEventListener('touchstart', startResize);
+        document.addEventListener('mousemove', handleResize);
+        document.addEventListener('touchmove', handleResize);
+        document.addEventListener('mouseup', stopResize);
+        document.addEventListener('touchend', stopResize);
+
+        // Adjust layout responsively on screen resize
+        window.addEventListener('resize', () => {
+            if (!isBoardOpen) return;
+            if (window.innerWidth >= 1024) {
+                pdfContainer.style.height = '100%';
+                whiteboardContainer.style.height = '100%';
+                pdfContainer.style.width = `${100 - defaultWidthPercent}%`;
+                whiteboardContainer.style.width = `${defaultWidthPercent}%`;
+            } else {
+                pdfContainer.style.width = '100%';
+                whiteboardContainer.style.width = '100%';
+                pdfContainer.style.height = '50%';
+                whiteboardContainer.style.height = '50%';
+            }
+        });
+
+        // Initialize
+        loadPdfFromUrl();
+    </script>
+</body>
+</html>

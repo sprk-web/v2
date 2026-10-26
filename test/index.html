@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPRK-Web | Test</title>
+    <link rel="icon" href="https://sprk-web.github.io/favicon.png" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { cyan: '#00f2fe', blue: '#4facfe', purple: '#7f00ff' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .brand-main {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #7f00ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .brand-sub::after {
+            content: ''; position: absolute; width: 6px; height: 6px;
+            background-color: #00f2fe; border-radius: 50%; top: 25%; right: -10px;
+            box-shadow: 0 0 8px #00f2fe, 0 0 15px #00f2fe;
+            animation: pulse 2s infinite alternate;
+        }
+        .logo-underline {
+            width: 25px; height: 3px; background: linear-gradient(90deg, #00f2fe, #7f00ff);
+            margin-top: 2px; border-radius: 2px; transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .brand-logo-container:hover .logo-underline { width: 100%; }
+        @keyframes pulse { 0% { transform: scale(0.8); opacity: 0.5; } 100% { transform: scale(1.3); opacity: 1; } }
+    </style>
+    <link rel="stylesheet" href="/site-theme.css">
+    <script type="module" src="/js/site-theme.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300 min-h-screen flex flex-col antialiased">
+
+    <main class="flex-1 max-w-5xl w-full mx-auto px-6 py-12 flex flex-col items-center justify-center">
+        
+        <div class="text-center space-y-3 mb-10 max-w-2xl">
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">Welcome to <span class="brand-main">SPRK</span>-Web</h1>
+            <p class="text-slate-500 dark:text-slate-400 text-base">Create customized assessments, load local test files, or jump straight into an existing examination.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-10">
+            
+            <a href="https://sprk-web.github.io/test/create" class="flex flex-col justify-between p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-brand-blue dark:hover:border-brand-blue/80 hover:shadow-lg transition group">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-brand-blue flex items-center justify-center group-hover:scale-110 transition">
+                        <i data-lucide="file-plus-2" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold">Create Test</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Design new quizzes, configure question parameters, and export .sprk files.</p>
+                    </div>
+                </div>
+                <div class="mt-6 flex items-center text-xs font-semibold text-brand-blue">
+                    Launch Editor <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition"></i>
+                </div>
+            </a>
+
+            <a href="https://sprk-web.github.io/test/live" class="flex flex-col justify-between p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-brand-purple dark:hover:border-brand-purple/80 hover:shadow-lg transition group">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-brand-purple flex items-center justify-center group-hover:scale-110 transition">
+                        <i data-lucide="upload-cloud" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold">Load Test</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Upload a local .sprk test file from your device to run the test launcher.</p>
+                    </div>
+                </div>
+                <div class="mt-6 flex items-center text-xs font-semibold text-brand-purple">
+                    Open Test Runner <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition"></i>
+                </div>
+            </a>
+
+            <div class="flex flex-col justify-between p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-brand-cyan dark:hover:border-brand-cyan/80 hover:shadow-lg transition">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-50 dark:bg-cyan-950/50 text-brand-cyan flex items-center justify-center">
+                        <i data-lucide="play-circle" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold">Take Existing Test</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Enter a test identifier to launch an official pre-configured exam.</p>
+                    </div>
+                    
+                    <form onsubmit="launchExistingTest(event)" class="space-y-2 pt-2">
+                        <input type="text" id="test-name-input" required placeholder="Enter TESTNAME..." class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-cyan">
+                        <button type="submit" class="w-full py-2 bg-gradient-to-r from-brand-blue to-brand-purple text-white text-xs font-semibold rounded-lg hover:opacity-90 transition flex items-center justify-center gap-1">
+                            Start Exam <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="w-full p-4 rounded-t-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    <i data-lucide="folder-git-2" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold">Browse Available Test Directory</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">View all publicly available tests hosted in the online repository.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="test-list-container" class="w-full p-6 border-x border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-b-2xl">
+            <div id="loading-state" class="flex items-center justify-center gap-2 py-6 text-xs text-slate-500 dark:text-slate-400">
+                <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Loading available tests...
+            </div>
+            <div id="test-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 hidden"></div>
+        </div>
+
+    </main>
+
+    <script>
+        // Theme Management
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (toggleBtn && themeIcon) toggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        });
+
+        // Launch Existing Test Redirect Handler
+        function launchExistingTest(e) {
+            e.preventDefault();
+            let testName = document.getElementById('test-name-input').value.trim();
+            if (testName) {
+                // Ensure filename ends with .sprk if not typed explicitly
+                if (!testName.endsWith('.sprk')) {
+                    testName += '.sprk';
+                }
+                window.location.href = `https://sprk-web.github.io/test/live/?path=${encodeURIComponent(testName)}`;
+            }
+        }
+
+async function fetchDirectoryTests() {
+    const loadingEl = document.getElementById('loading-state');
+    const gridEl = document.getElementById('test-grid');
+    
+    const apiUrl = 'https://api.github.com/repos/sprk-web/sprk-web.github.io/contents/test/tests';
+    
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error(`GitHub API returned status ${response.status}`);
+
+        const files = await response.json();
+
+        const tests = files
+            .filter(file => file.type === 'file' && file.name.toLowerCase().endsWith('.sprk'))
+            .map(file => ({
+                name: file.name.replace(/\.sprk$/i, ''),
+                path: file.name
+            }));
+
+        loadingEl.classList.add('hidden');
+        gridEl.classList.remove('hidden');
+
+        if (tests.length === 0) {
+            gridEl.innerHTML = `<p class="col-span-full text-center text-xs text-slate-500 py-4">No .sprk test files found in directory.</p>`;
+            return;
+        }
+
+        gridEl.innerHTML = tests.map(test => `
+            <div class="flex items-center justify-between p-3 border border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50 dark:bg-slate-800/40 hover:border-brand-cyan transition">
+                <div class="truncate mr-2">
+                    <h5 class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate" title="${test.name}">${test.name}</h5>
+                    <span class="text-[10px] text-slate-400 uppercase tracking-wide">.sprk</span>
+                </div>
+                <a href="https://sprk-web.github.io/test/live/?path=${encodeURIComponent(test.path)}" class="px-3 py-1.5 bg-gradient-to-r from-brand-blue to-brand-purple text-white text-[10px] font-semibold rounded-md hover:opacity-90 transition flex items-center gap-1 shrink-0">
+                    Start <i data-lucide="play" class="w-2.5 h-2.5"></i>
+                </a>
+            </div>
+        `).join('');
+
+        lucide.createIcons();
+
+    } catch (err) {
+        console.error('Error fetching test listings:', err);
+        loadingEl.innerHTML = `<span class="text-rose-500 text-center block">Could not load test directory automatically.<br/>Ensure repository privacy is public and path is correct.</span>`;
+    }
+}
+        
+        // Initialize Lucide Icons & Load Tests
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            fetchDirectoryTests();
+        });
+    </script>
+</body>
+</html>

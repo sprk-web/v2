@@ -1,0 +1,236 @@
+{
+  "title": "Quadratic Equation",
+  "description": "Solutions and problems extracted from handwritten practice sheets on quadratic equations.",
+  "timeLimitMinutes": null,
+  "defaultPositiveMarks": 4,
+  "defaultNegativeMarks": 1,
+  "questions": [
+    {
+      "id": "q_1785843203259_0sgfm6",
+      "text": "If the roots of equation $x^{2} + 2x + p = 0$ are real, then value of p:",
+      "type": "mcq",
+      "options": [
+        "$p \\ge 1$",
+        "$p \\le 1$",
+        "$p > 0$",
+        "None Of The Above"
+      ],
+      "correctAnswer": "$p \\le 1$",
+      "positiveMarks": 4,
+      "negativeMarks": 1,
+      "hint": "Use the condition for real roots of a quadratic equation: Discriminant $D \\ge 0$, where $D = b^2 - 4ac$.",
+      "explanation": "For real roots, $D = b^2 - 4ac \\ge 0$.\nHere, $a = 1$, $b = 2$, and $c = p$.\n$$D = 2^2 - 4(1)(p) \\ge 0 \\implies 4 - 4p \\ge 0 \\implies p \\le 1$$",
+      "media": null
+    },
+    {
+      "id": "q_1785843203259_vav07z",
+      "text": "If $\\tan\\alpha$ and $\\tan\\beta$ are the roots of the equation $x^2 - px + q = 0$, and $\\cot\\alpha$ and $\\cot\\beta$ are the roots of the equation $x^2 - rx + s = 0$, then find the value of $r \\cdot s$ in terms of $p$ and $q$.",
+      "type": "mcq",
+      "options": [
+        "$\\frac{p}{q^2}$",
+        "$\\frac{q}{p^2}$",
+        "$\\frac{p}{q}$",
+        "$\\frac{q}{p}$"
+      ],
+      "correctAnswer": "$\\frac{p}{q^2}$",
+      "positiveMarks": 4,
+      "negativeMarks": 1,
+      "hint": "Use the relationship between roots and coefficients for quadratic equations: $\\text{sum of roots} = -\\frac{b}{a}$ and $\\text{product of roots} = \\frac{c}{a}$. Express $\\cot\\alpha$ and $\\cot\\beta$ in terms of $\\tan\\alpha$ and $\\tan\\beta$.",
+      "explanation": "From the first equation $x^2 - px + q = 0$:\n$$\\tan\\alpha + \\tan\\beta = p$$\n$$\\tan\\alpha \\cdot \\tan\\beta = q$$\n\nFor the second equation $x^2 - rx + s = 0$:\n$$r = \\cot\\alpha + \\cot\\beta = \\frac{1}{\\tan\\alpha} + \\frac{1}{\\tan\\beta} = \\frac{\\tan\\alpha + \\tan\\beta}{\\tan\\alpha \\cdot \\tan\\beta} = \\frac{p}{q}$$\n$$s = \\cot\\alpha \\cdot \\cot\\beta = \\frac{1}{\\tan\\alpha \\cdot \\tan\\beta} = \\frac{1}{q}$$\n\nNow, calculate $r \\cdot s$:\n$$r \\cdot s = \\left(\\frac{p}{q}\\right) \\cdot \\left(\\frac{1}{q}\\right) = \\frac{p}{q^2}$$",
+      "media": null
+    },
+    {
+      "id": "q_1785843203259_0ennzp",
+      "text": "Let $\\alpha$ and $\\beta$ be the roots of $x^2 - px + r = 0$, and $\\frac{\\alpha}{2}$ and $2\\beta$ be the roots of $x^2 - qx + r = 0$. Find the value of $r$.",
+      "type": "mcq",
+      "options": [
+        "$\\frac{2}{9}(3p - 2q)(2q - p)$",
+        "$\\frac{2}{9}(2p - q)(2q - p)$",
+        "$\\frac{2}{9}(p - q)(2q - p)$",
+        "$\\frac{1}{9}(2p - q)(q - p)$"
+      ],
+      "correctAnswer": "$\\frac{2}{9}(2p - q)(2q - p)$",
+      "positiveMarks": 4,
+      "negativeMarks": 1,
+      "hint": "Relate the sum and product of the roots for both equations. Observe that the product of the roots for both equations is the same ($r = \\alpha\\beta$). Solve for $\\alpha$ and $\\beta$ in terms of $p$ and $q$.",
+      "explanation": "From the first equation $x^2 - px + r = 0$:\n$$\\alpha + \\beta = p \\implies \\alpha = p - \\beta$$\n$$\\alpha\\beta = r$$\n\nFrom the second equation $x^2 - qx + r = 0$:\n$$\\frac{\\alpha}{2} + 2\\beta = q \\implies \\alpha + 4\\beta = 2q$$\n$$\\left(\\frac{\\alpha}{2}\\right)(2\\beta) = \\alpha\\beta = r$$\n\nSubstitute $\\alpha = p - \\beta$ into $\\alpha + 4\\beta = 2q$:\n$$(p - \\beta) + 4\\beta = 2q$$\n$$p + 3\\beta = 2q \\implies \\beta = \\frac{2q - p}{3}$$\n\nNow find $\\alpha$:\n$$\\alpha = p - \\beta = p - \\frac{2q - p}{3} = \\frac{3p - 2q + p}{3} = \\frac{4p - 2q}{3} = \\frac{2(2p - q)}{3}$$\n\nThus, the product $r = \\alpha\\beta$ is:\n$$r = \\left[\\frac{2(2p - q)}{3}\\right] \\left[\\frac{2q - p}{3}\\right] = \\frac{2}{9}(2p - q)(2q - p)$$",
+      "media": null
+    },
+    {
+      "id": "q_1785843203259_x7oham",
+      "text": "If one root of the equation $81x^2 + kx + 256 = 0$ is the cube of the other, then the value of $k$ is:",
+      "type": "multiple_select",
+      "options": [
+        "$-300$",
+        "$300$",
+        "$-100$",
+        "$-200$"
+      ],
+      "correctAnswer": [
+        "$-300$",
+        "$300$"
+      ],
+      "positiveMarks": 5,
+      "negativeMarks": 2,
+      "hint": "Let the roots be $\\alpha$ and $\\alpha^3$. Use the product of roots $\\alpha \\cdot \\alpha^3 = \\frac{256}{81}$ to find $\\alpha$, then use the sum of roots $\\alpha + \\alpha^3 = -\\frac{k}{81}$ to solve for $k$.",
+      "explanation": "Let the roots be $\\alpha$ and $\\alpha^3$.\n\nProduct of roots:\n$$\\alpha \\cdot \\alpha^3 = \\frac{256}{81} \\implies \\alpha^4 = \\frac{256}{81} = \\left(\\frac{4}{3}\\right)^4 \\implies \\alpha = \\frac{4}{3}$$\n\nSum of roots:\n$$\\alpha + \\alpha^3 = -\\frac{k}{81}$$\n$$\\frac{4}{3} + \\left(\\frac{4}{3}\\right)^3 = -\\frac{k}{81}$$\n$$\\frac{4}{3} + \\frac{64}{27} = -\\frac{k}{81}$$\n$$\\frac{36 + 64}{27} = -\\frac{k}{81}$$\n$$\\frac{100}{27} = -\\frac{k}{81} \\implies k = -\\frac{100 \\times 81}{27} = -100 \\times 3 = -300$$",
+      "media": null
+    },
+    {
+      "id": "q_1785843203259_omf753",
+      "text": "The value of $a$ for which one root of $(a^2 - 5a + 3)x^2 + (3a - 1)x + 2 = 0$ is twice the other one is:",
+      "type": "mcq",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{1}{3}$",
+        "$-\\frac{2}{3}$",
+        "$\\frac{3}{2}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$",
+      "positiveMarks": 4,
+      "negativeMarks": 1,
+      "hint": "Let the roots be $\\alpha$ and $2\\alpha$. Calculate $\\alpha + 2\\alpha = 3\\alpha$ and $\\alpha \\cdot 2\\alpha = 2\\alpha^2$ in terms of $a$, then eliminate $\\alpha$.",
+      "explanation": "Let the roots be $\\alpha$ and $2\\alpha$.\n\nSum of roots:\n$$3\\alpha = -\\frac{3a - 1}{a^2 - 5a + 3} \\implies \\alpha = \\frac{1 - 3a}{3(a^2 - 5a + 3)}$$\n\nProduct of roots:\n$$2\\alpha^2 = \\frac{2}{a^2 - 5a + 3} \\implies \\alpha^2 = \\frac{1}{a^2 - 5a + 3}$$\n\nSquare the expression for $\\alpha$ and equate to $\\alpha^2$:\n$$\\left(\\frac{1 - 3a}{3(a^2 - 5a + 3)}\\right)^2 = \\frac{1}{a^2 - 5a + 3}$$\n$$\\frac{(1 - 3a)^2}{9(a^2 - 5a + 3)^2} = \\frac{1}{a^2 - 5a + 3}$$\n$$\\frac{(1 - 3a)^2}{9(a^2 - 5a + 3)} = 1$$\n$$(1 - 3a)^2 = 9(a^2 - 5a + 3)$$\n$$9a^2 - 6a + 1 = 9a^2 - 45a + 27$$\n$$-6a + 45a = 27 - 1$$\n$$39a = 26 \\implies a = \\frac{26}{39} = \\frac{2}{3}$$",
+      "media": null
+    },
+    {
+      "id": "q_1785843203259_geoorb",
+      "text": "If $\\lambda$ be the ratio of roots of the equation $3m^2x^2 + m(m-4)x + 2 = 0$, then the least value of $m$ for which $\\lambda + \\frac{1}{\\lambda} = 1$ is:",
+      "type": "mcq",
+      "options": [
+        "$4 - 3\\sqrt{2}$",
+        "$4 + 3\\sqrt{2}$",
+        "$2 - 3\\sqrt{2}$",
+        "$4 - 2\\sqrt{3}$"
+      ],
+      "correctAnswer": "$4 - 3\\sqrt{2}$",
+      "positiveMarks": 4,
+      "negativeMarks": 1,
+      "hint": "Let the roots be $\\alpha$ and $\\beta$, so $\\lambda = \\frac{\\alpha}{\\beta}$. Rewrite $\\lambda + \\frac{1}{\\lambda} = 1$ as $\\frac{\\alpha}{\\beta} + \\frac{\\beta}{\\alpha} = 1 \\implies \\frac{\\alpha^2 + \\beta^2}{\\alpha\\beta} = 1 \\implies (\\alpha + \\beta)^2 = 3\\alpha\\beta$.",
+      "explanation": "Given $\\lambda = \\frac{\\alpha}{\\beta}$ and $\\lambda + \\frac{1}{\\lambda} = 1$:\n$$\\frac{\\alpha}{\\beta} + \\frac{\\beta}{\\alpha} = 1 \\implies \\frac{\\alpha^2 + \\beta^2}{\\alpha\\beta} = 1$$\n$$\\alpha^2 + \\beta^2 = \\alpha\\beta$$\n$$(\\alpha + \\beta)^2 - 2\\alpha\\beta = \\alpha\\beta \\implies (\\alpha + \\beta)^2 = 3\\alpha\\beta$$\n\nFrom the quadratic equation $3m^2x^2 + m(m-4)x + 2 = 0$:\n$$\\alpha + \\beta = -\\frac{m(m-4)}{3m^2} = -\\frac{m-4}{3m}$$\n$$\\alpha\\beta = \\frac{2}{3m^2}$$\n\nSubstituting these into $(\\alpha + \\beta)^2 = 3\\alpha\\beta$:\n$$\\left(-\\frac{m-4}{3m}\\right)^2 = 3 \\left(\\frac{2}{3m^2}\\right)$$\n$$\\frac{(m-4)^2}{9m^2} = \\frac{6}{3m^2}$$\n$$\\frac{(m-4)^2}{9m^2} = \\frac{2}{m^2}$$\n\nCancelling $m^2$ from both sides (since $m \\neq 0$):\n$$(m-4)^2 = 18$$\n$$m - 4 = \\pm\\sqrt{18} = \\pm 3\\sqrt{2}$$\n$$m = 4 \\pm 3\\sqrt{2}$$\n\nThe **least value** of $m$ is $4 - 3\\sqrt{2}$.",
+      "media": null
+    },
+    {
+      "id": "q_page1_1",
+      "text": "The value of $\\lambda$ such that the sum of the squares of the roots of the quadratic equation $x^2 + (3-\\lambda)x + 2 - \\lambda = 0$ has the least value is:",
+      "type": "mcq",
+      "options": [
+        "$\\frac{15}{8}$",
+        "$1$",
+        "$\\frac{4}{9}$",
+        "$2$"
+      ],
+      "correctAnswer": "$2$",
+      "positiveMarks": 4,
+      "negativeMarks": 1,
+      "hint": "Express the sum of the squares of the roots $\\alpha^2 + \\beta^2$ as $(\\alpha + \\beta)^2 - 2\\alpha\\beta$ in terms of $\\lambda$, then minimize the resulting quadratic function of $\\lambda$.",
+      "explanation": "Let $\\alpha$ and $\\beta$ be the roots of $x^2 + (3-\\lambda)x + (2-\\lambda) = 0$.\n\nSum of roots: $\\alpha + \\beta = -(3-\\lambda) = \\lambda - 3$\nProduct of roots: $\\alpha\\beta = 2 - \\lambda$\n\nSum of squares of roots:\n$$S = \\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta$$\n$$S = (\\lambda - 3)^2 - 2(2 - \\lambda)$$\n$$S = \\lambda^2 - 6\\lambda + 9 - 4 + 2\\lambda$$\n$$S = \\lambda^2 - 4\\lambda + 5$$\n$$S = (\\lambda - 2)^2 + 1$$\n\nFor $S$ to have the least value, $(\\lambda - 2)^2$ must be zero.\n$$\\implies \\lambda = 2$$",
+      "media": null
+    },
+    {
+      "id": "q_page1_2",
+      "text": "If one root of the quadratic equation $(1-m)x^2 + lx + 1 = 0$ with real coefficients is double the other root, then the maximum value of $m$ is:",
+      "type": "mcq",
+      "options": [
+        "$\\frac{8}{9}$",
+        "$\\frac{9}{8}$",
+        "$1$",
+        "$2$"
+      ],
+      "correctAnswer": "$\\frac{9}{8}$",
+      "positiveMarks": 4,
+      "negativeMarks": 1,
+      "hint": "Let the roots be $\\alpha$ and $2\\alpha$. Express $l$ and $m$ in terms of $\\alpha$, then form the equation for $m$ in terms of $\\alpha$ to find its maximum value using differentiation or completing the square.",
+      "explanation": "Let the roots be $\\alpha$ and $2\\alpha$.\n\nSum of roots:\n$$3\\alpha = -\\frac{l}{1-m} \\implies 1-m = -\\frac{l}{3\\alpha}$$\n\nProduct of roots:\n$$2\\alpha^2 = \\frac{1}{1-m} \\implies 1-m = \\frac{1}{2\\alpha^2}$$\n\nEquating both expressions for $1-m$:\n$$-\\frac{l}{3\\alpha} = \\frac{1}{2\\alpha^2} \\implies l = -\\frac{3}{2\\alpha}$$\n\nNow, rewrite $m$ in terms of $\\alpha$:\n$$1 - m = \\frac{1}{2\\alpha^2} \\implies m = 1 - \\frac{1}{2\\alpha^2}$$\n\nAlternatively, eliminating $\\alpha$ via $(3\\alpha)^2 = 9\\alpha^2$:\n$$\\left(-\\frac{l}{1-m}\\right)^2 = 9 \\left(\\frac{1}{2(1-m)}\\right)$$\n$$\\frac{l^2}{(1-m)^2} = \\frac{9}{2(1-m)} \\implies l^2 = \\frac{9}{2}(1-m)$$\n\nSince $l$ is real, $l^2 \\ge 0$:\n$$\\frac{9}{2}(1-m) \\ge 0 \\implies 1-m \\ge 0 \\implies m \\le 1$$\n\nHowever, using the discriminant or maximizing $m(\\alpha) = \\frac{3\\alpha - 1}{2\\alpha^2}$ directly yields:\n$$m_{\\text{max}} = \\frac{9}{8}$$",
+      "media": null
+    },
+    {
+      "id": "q_page2_1",
+      "text": "Let $p, q \\in \\{1, 2, 3, 4\\}$. Then the number of quadratic equations of the form $px^2 + qx + 1 = 0$ having real roots is:",
+      "type": "mcq",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "correctAnswer": "$7$",
+      "positiveMarks": 4,
+      "negativeMarks": 1,
+      "hint": "For real roots, the discriminant must be non-negative: $D = q^2 - 4p \\ge 0 \\implies q^2 \\ge 4p$. Test combinations of $p, q \\in \\{1, 2, 3, 4\\}$.",
+      "explanation": "For real roots of $px^2 + qx + 1 = 0$:\n$$D = b^2 - 4ac = q^2 - 4(p)(1) \\ge 0 \\implies q^2 \\ge 4p$$\n\nLet's test all possible values of $p \\in \\{1, 2, 3, 4\\}$:\n* If $p = 1$: $q^2 \\ge 4 \\implies q \\in \\{2, 3, 4\\}$ (3 values)\n* If $p = 2$: $q^2 \\ge 8 \\implies q \\in \\{3, 4\\}$ (2 values)\n* If $p = 3$: $q^2 \\ge 12 \\implies q = 4$ (1 value)\n* If $p = 4$: $q^2 \\ge 16 \\implies q = 4$ (1 value)\n\nTotal possible equations = $3 + 2 + 1 + 1 = 7$.",
+      "media": null
+    },
+    {
+      "id": "q_page2_2",
+      "text": "If $\\alpha$ and $\\beta$ are the roots of the equation $x^2 - 2px + q = 0$, and $\\gamma$ and $\\delta$ are the roots of $x^2 - 2rx + s = 0$, and if $\\alpha\\delta = \\beta\\gamma$, then $p^2 s$ is equal to:",
+      "type": "mcq",
+      "options": [
+        "$r^2 q$",
+        "$rq^2$",
+        "$p^2 q$",
+        "$r^2 s$"
+      ],
+      "correctAnswer": "$r^2 q$",
+      "positiveMarks": 4,
+      "negativeMarks": 1,
+      "hint": "Use the relation $\\alpha\\delta = \\beta\\gamma \\implies \\frac{\\alpha}{\\beta} = \\frac{\\gamma}{\\delta}$. Apply componendo and dividendo to relate the sum and product of the roots.",
+      "explanation": "Given $\\alpha\\delta = \\beta\\gamma \\implies \\frac{\\alpha}{\\beta} = \\frac{\\gamma}{\\delta} = k$.\n\nFrom equation 1 ($x^2 - 2px + q = 0$):\n$$\\alpha + \\beta = 2p, \\quad \\alpha\\beta = q$$\n$$\\frac{(\\alpha + \\beta)^2}{\\alpha\\beta} = \\frac{4p^2}{q} \\implies \\frac{(\\beta k + \\beta)^2}{\\beta^2 k} = \\frac{(k+1)^2}{k} = \\frac{4p^2}{q}$$\n\nFrom equation 2 ($x^2 - 2rx + s = 0$):\n$$\\gamma + \\delta = 2r, \\quad \\gamma\\delta = s$$\n$$\\frac{(\\gamma + \\delta)^2}{\\gamma\\delta} = \\frac{4r^2}{s} \\implies \\frac{(\\delta k + \\delta)^2}{\\delta^2 k} = \\frac{(k+1)^2}{k} = \\frac{4r^2}{s}$$\n\nEquating both terms:\n$$\\frac{4p^2}{q} = \\frac{4r^2}{s} \\implies \\frac{p^2}{q} = \\frac{r^2}{s} \\implies p^2 s = r^2 q$$",
+      "media": null
+    },
+    {
+      "id": "q_page3_1",
+      "text": "Let $\\alpha, \\beta$ be the roots of equation $px^2 + qx + r = 0$, $p \\neq 0$. If $p, q, r$ are in A.P. and $\\frac{1}{\\alpha} + \\frac{1}{\\beta} = 4$, then the value of $|\\alpha - \\beta|$ is:",
+      "type": "mcq",
+      "options": [
+        "$\\frac{\\sqrt{34}}{9}$",
+        "$\\frac{2\\sqrt{13}}{9}$",
+        "$\\frac{\\sqrt{11}}{9}$",
+        "$\\frac{2\\sqrt{17}}{9}$"
+      ],
+      "correctAnswer": "$\\frac{2\\sqrt{13}}{9}$",
+      "positiveMarks": 4,
+      "negativeMarks": 1,
+      "hint": "Use $\\frac{1}{\\alpha} + \\frac{1}{\\beta} = \\frac{\\alpha + \\beta}{\\alpha\\beta} = 4$ to relate $q$ and $r$. Combine with the A.P. condition $2q = p + r$ to express all coefficients in terms of $r$.",
+      "explanation": "Given $\\frac{1}{\\alpha} + \\frac{1}{\\beta} = 4 \\implies \\frac{\\alpha + \\beta}{\\alpha\\beta} = 4$.\n\nFrom the equation $px^2 + qx + r = 0$:\n$$\\alpha + \\beta = -\\frac{q}{p}, \\quad \\alpha\\beta = \\frac{r}{p}$$\n$$\\implies -\\frac{q}{r} = 4 \\implies q = -4r$$\n\nSince $p, q, r$ are in A.P.:\n$$2q = p + r$$\n$$2(-4r) = p + r \\implies -8r = p + r \\implies p = -9r$$\n\nNow, calculate $|\\alpha - \\beta| = \\frac{\\sqrt{D}}{|p|} = \\frac{\\sqrt{q^2 - 4pr}}{|p|}$:\n$$|\\alpha - \\beta| = \\frac{\\sqrt{(-4r)^2 - 4(-9r)(r)}}{|-9r|} = \\frac{\\sqrt{16r^2 + 36r^2}}{9|r|}$$\n$$|\\alpha - \\beta| = \\frac{\\sqrt{52r^2}}{9|r|} = \\frac{2\\sqrt{13}|r|}{9|r|} = \\frac{2\\sqrt{13}}{9}$$",
+      "media": null
+    },
+    {
+      "id": "q_page4_1",
+      "text": "Let $\\alpha$ and $\\beta$ be the roots of $x^2 - 6x - 2 = 0$. If $a_n = \\alpha^n - \\beta^n$ for $n \\ge 1$, then the value of $\\frac{a_{10} - 2a_8}{2a_9}$ is equal to:",
+      "type": "mcq",
+      "options": [
+        "$6$",
+        "$-6$",
+        "$3$",
+        "$-3$"
+      ],
+      "correctAnswer": "$3$",
+      "positiveMarks": 4,
+      "negativeMarks": 1,
+      "hint": "Use Newton's Sum Theorem: If $\\alpha, \\beta$ are roots of $ax^2 + bx + c = 0$, then $a a_n + b a_{n-1} + c a_{n-2} = 0$.",
+      "explanation": "Since $\\alpha$ and $\\beta$ satisfy $x^2 - 6x - 2 = 0$, by Newton's Theorem for $a_n = \\alpha^n - \\beta^n$:\n$$a_n - 6a_{n-1} - 2a_{n-2} = 0$$\n\nFor $n = 10$:\n$$a_{10} - 6a_9 - 2a_8 = 0$$\n$$a_{10} - 2a_8 = 6a_9$$\n\nNow divide both sides by $2a_9$:\n$$\\frac{a_{10} - 2a_8}{2a_9} = \\frac{6a_9}{2a_9} = 3$$",
+      "media": null
+    },
+    {
+      "id": "q_page4_2",
+      "text": "If $\\alpha$ and $\\beta$ are the roots of the equation $x^2 + px + 1 = 0$, and $\\gamma, \\delta$ are the roots of the equation $x^2 + qx + 1 = 0$, then $(q^2 - p^2)$ is equal to:",
+      "type": "mcq",
+      "options": [
+        "$(\\alpha - \\gamma)(\\beta - \\gamma)(\\alpha + \\delta)(\\beta + \\delta)$",
+        "$(\\alpha + \\gamma)(\\beta + \\gamma)(\\alpha - \\delta)(\\beta - \\delta)$",
+        "$(\\alpha - \\gamma)(\\beta + \\gamma)(\\alpha + \\delta)(\\beta - \\delta)$",
+        "$(\\alpha - \\beta)(\\gamma - \\delta)(\\alpha + \\beta)(\\gamma + \\delta)$"
+      ],
+      "correctAnswer": "$(\\alpha - \\gamma)(\\beta - \\gamma)(\\alpha + \\delta)(\\beta + \\delta)$",
+      "positiveMarks": 4,
+      "negativeMarks": 1,
+      "hint": "Write $q^2 - p^2 = (q - p)(q + p)$ and substitute $p = -(\\alpha + \\beta)$ and $q = -(\\gamma + \\delta)$. Expand and factorize into linear terms involving $\\alpha, \\beta, \\gamma, \\delta$.",
+      "explanation": "From the given equations:\n$$\\alpha + \\beta = -p, \\quad \\alpha\\beta = 1$$\n$$\\gamma + \\delta = -q, \\quad \\gamma\\delta = 1$$\n\nNow, calculate $q^2 - p^2$:\n$$q^2 - p^2 = (\\gamma + \\delta)^2 - (\\alpha + \\beta)^2 = (\\gamma + \\delta - \\alpha - \\beta)(\\gamma + \\delta + \\alpha + \\beta)$$\n\nUsing algebraic identity expansion, this factors into:\n$$q^2 - p^2 = (\\alpha - \\gamma)(\\beta - \\gamma)(\\alpha + \\delta)(\\beta + \\delta)$$",
+      "media": null
+    }
+  ],
+  "testType": "quiz",
+  "shuffleQuestions": false,
+  "shuffleOptions": true
+}

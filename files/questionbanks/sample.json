@@ -1,0 +1,127 @@
+[
+  {
+    "question": "What is the capital city of France?",
+    "options": ["London", "Berlin", "Paris", "Madrid"],
+    "correct": 2
+  },
+  {
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+    "correct": 1
+  },
+  {
+    "question": "What is the largest mammal on Earth?",
+    "options": ["African Elephant", "Blue Whale", "Giraffe", "Colossal Squid"],
+    "correct": 1
+  },
+  {
+    "question": "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=500&q=80",
+    "options": ["Abstract Gradient", "Solar Flare", "Thermal Map", "Ocean Depths"],
+    "correct": 0
+  },
+  {
+    "question": "How many bones are there in an adult human body?",
+    "options": ["186", "206", "216", "296"],
+    "correct": 1
+  },
+  {
+    "question": "Which element has the chemical symbol 'O'?",
+    "options": ["Gold", "Osmium", "Oxygen", "Zinc"],
+    "correct": 2
+  },
+  {
+    "question": "Who painted the famous 'Mona Lisa'?",
+    "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+    "correct": 2
+  },
+  {
+    "question": "What is the primary currency used in Japan?",
+    "options": ["Yuan", "Won", "Yen", "Ringgit"],
+    "correct": 2
+  },
+  {
+    "question": "Which gas do plants primarily absorb during photosynthesis?",
+    "options": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+    "correct": 2
+  },
+  {
+    "question": "What is the square root of 64?",
+    "options": ["6", "7", "8", "9"],
+    "correct": 2
+  },
+  {
+    "question": "Which ocean is the largest on Earth?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    "correct": 3
+  },
+  {
+    "question": "How many continents are there on Earth?",
+    "options": ["5", "6", "7", "8"],
+    "correct": 2
+  },
+  {
+    "question": "What is the hardest natural substance known on Earth?",
+    "options": ["Gold", "Iron", "Diamond", "Quartz"],
+    "correct": 2
+  },
+  {
+    "question": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&q=80",
+    "options": ["Cityscape", "Desert Dunes", "Yosemite Valley Landscape", "Underwater Reef"],
+    "correct": 2
+  },
+  {
+    "question": "Which instrument is used to measure atmospheric pressure?",
+    "options": ["Thermometer", "Barometer", "Anemometer", "Hygrometer"],
+    "correct": 1
+  },
+  {
+    "question": "Who is credited with inventing the telephone?",
+    "options": ["Thomas Edison", "Nikola Tesla", "Alexander Graham Bell", "Albert Einstein"],
+    "correct": 2
+  },
+  {
+    "question": "What is the smallest prime number?",
+    "options": ["0", "1", "2", "3"],
+    "correct": 2
+  },
+  {
+    "question": "Which country is home to the Kangaroo?",
+    "options": ["South Africa", "Austria", "New Zealand", "Australia"],
+    "correct": 3
+  },
+  {
+    "question": "What is the boiling point of pure water at sea level?",
+    "options": ["90°C", "100°C", "110°C", "120°C"],
+    "correct": 1
+  },
+  {
+    "question": "Which classical composer became completely deaf later in life?",
+    "options": ["Wolfgang Amadeus Mozart", "Johann Sebastian Bach", "Ludwig van Beethoven", "Franz Schubert"],
+    "correct": 2
+  },
+  {
+    "question": "What is the chemical formula for table salt?",
+    "options": ["H2O", "NaCl", "CO2", "HCl"],
+    "correct": 1
+  },
+  {
+    "question": "Which state in the USA is the largest by land area?",
+    "options": ["Texas", "California", "Alaska", "Montana"],
+    "correct": 2
+  },
+  {
+    "question": "How many sides does a regular hexagon have?",
+    "options": ["5", "6", "7", "8"],
+    "correct": 1
+  },
+  {
+    "question": "What is the main language spoken in Brazil?",
+    "options": ["Spanish", "Portuguese", "French", "English"],
+    "correct": 1
+  },
+  {
+    "question": "Which vitamin is heavily present in citrus fruits like oranges?",
+    "options": ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"],
+    "correct": 2
+  }
+]

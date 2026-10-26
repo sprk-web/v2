@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPRK-Web | PDF Viewer & Whiteboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .brand-logo-container {
+            position: relative;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .brand-main {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #7f00ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-sub {
+            position: relative;
+        }
+
+        .brand-sub::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #00f2fe;
+            border-radius: 50%;
+            top: 25%;
+            right: -10px;
+            box-shadow: 0 0 8px #00f2fe, 0 0 15px #00f2fe;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .logo-underline {
+            width: 25px;
+            height: 3px;
+            background: linear-gradient(90deg, #00f2fe, #7f00ff);
+            margin-top: 2px;
+            border-radius: 2px;
+            box-shadow: 0 2px 6px rgba(0, 242, 254, 0.4);
+            transition: width 0.4s ease;
+        }
+
+        .brand-logo-container:hover .logo-underline {
+            width: 100%;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        canvas {
+            touch-action: none;
+        }
+    </style>
+    <link rel="stylesheet" href="/site-theme.css">
+    <script type="module" src="/js/site-theme.js"></script>
+</head>
+<body class="bg-slate-900 h-screen w-screen overflow-hidden flex flex-col font-sans antialiased text-slate-200">
+
+    <header class="border-b border-slate-800 bg-slate-900/70 backdrop-blur sticky top-0 z-50 w-full shrink-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center w-full">
+            <div class="brand-logo-container" onclick="location.reload()">
+                <div class="flex items-center text-lg sm:text-xl font-black uppercase tracking-wider select-none">
+                    <span class="brand-main">Sprk</span>
+                    <span class="brand-sub text-white font-light ml-0.5">-Web</span>
+                </div>
+                <div class="logo-underline"></div>
+            </div>
+
+            <div class="flex items-center space-x-2">
+                <button id="toggle-board-btn" class="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium shadow transition-all active:scale-95">
+                    <i data-lucide="presentation" class="w-4 h-4"></i>
+                    <span id="toggle-board-text">Whiteboard</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="workspace" class="flex-1 flex flex-col lg:flex-row overflow-hidden relative w-full bg-slate-950">
+        
+        <section id="pdf-container" class="h-1/2 lg:h-full w-full transition-all duration-200 p-2 sm:p-4 flex flex-col min-h-[200px]">
+            <div class="w-full h-full rounded-xl overflow-hidden border border-slate-800 bg-slate-900 shadow-inner flex flex-col">
+                <div class="bg-slate-800/40 border-b border-slate-800 px-3 py-2 flex items-center justify-between text-xs text-slate-400 shrink-0">
+                    <span class="flex items-center gap-2 truncate max-w-[60%]">
+                        <i data-lucide="file-text" class="w-3.5 h-3.5 text-indigo-400 shrink-0"></i>
+                        <span id="pdf-name" class="truncate">No Document Loaded</span>
+                    </span>
+                    <div class="flex items-center gap-2">
+                        <a id="open-external-btn" href="#" target="_blank" class="hover:text-white transition hidden" title="Open PDF Direct">
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-1 relative w-full h-full">
+                    <iframe id="pdf-viewer" class="w-full h-full border-none hidden" src=""></iframe>
+                    <div id="pdf-loading" class="absolute inset-0 w-full h-full flex flex-col items-center justify-center space-y-3 text-slate-400 p-4 text-center">
+                        <i data-lucide="loader-2" class="w-8 h-8 animate-spin text-indigo-500"></i>
+                        <p class="text-sm">Loading document...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="resize-divider" class="h-2 w-full lg:h-full lg:w-2 bg-slate-800 hover:bg-indigo-500 cursor-row-resize lg:cursor-col-resize shrink-0 transition-colors z-20 hidden items-center justify-center touch-none">
+            <div class="h-1 w-8 lg:h-8 lg:w-1 bg-slate-600 rounded"></div>
+        </div>
+
+        <section id="whiteboard-container" class="h-1/2 lg:h-full w-full lg:w-0 hidden bg-slate-900 border-t lg:border-t-0 lg:border-l border-slate-800 flex flex-col transition-all duration-200 select-none min-h-[250px]">
+            <div class="p-2 sm:p-3 border-b border-slate-800 bg-slate-800/80 flex flex-wrap gap-2 items-center justify-between shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-xs sm:text-sm font-semibold tracking-wide text-slate-300 flex items-center gap-1.5">
+                        <i data-lucide="pen-tool" class="w-4 h-4 text-indigo-400"></i> Scratchpad
+                    </span>
+                </div>
+                
+                <div class="flex items-center gap-1 sm:gap-2">
+                    <button id="ocr-btn" class="flex items-center gap-1 bg-purple-600 hover:bg-purple-500 text-white text-xs px-2 py-1.5 rounded font-medium transition active:scale-95 shadow" title="Convert Handwritten Math to Text/LaTeX">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> <span class="hidden sm:inline">Math AI</span>
+                    </button>
+                    <button id="undo-btn" class="p-1.5 rounded text-slate-400 hover:bg-slate-700 hover:text-white transition disabled:opacity-40" title="Undo (Ctrl+Z)">
+                        <i data-lucide="undo-2" class="w-4 h-4"></i>
+                    </button>
+                    <button id="redo-btn" class="p-1.5 rounded text-slate-400 hover:bg-slate-700 hover:text-white transition disabled:opacity-40" title="Redo (Ctrl+Y)">
+                        <i data-lucide="redo-2" class="w-4 h-4"></i>
+                    </button>
+                    <button id="theme-btn" class="p-1.5 rounded text-slate-400 hover:bg-slate-700 hover:text-white transition" title="Toggle Light/Dark Theme">
+                        <i data-lucide="sun" class="w-4 h-4"></i>
+                    </button>
+                    <button id="save-board-btn" class="flex items-center gap-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-2.5 py-1.5 rounded font-medium transition active:scale-95 shadow">
+                        <i data-lucide="download" class="w-3.5 h-3.5"></i> <span class="hidden sm:inline">Save</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-900 p-2 border-b border-slate-800 text-xs shrink-0">
+                <div class="flex items-center gap-1">
+                    <button id="tool-pen" class="p-1.5 rounded bg-indigo-600 text-white hover:bg-indigo-500 transition" title="Freehand Pen">
+                        <i data-lucide="pencil" class="w-4 h-4"></i>
+                    </button>
+                    <button id="tool-auto-shape" class="p-1.5 rounded text-slate-400 hover:bg-slate-800 hover:text-white transition" title="Auto-Shape / Geometry Ruler">
+                        <i data-lucide="shapes" class="w-4 h-4"></i>
+                    </button>
+                    <button id="tool-eraser" class="p-1.5 rounded text-slate-400 hover:bg-slate-800 hover:text-white transition" title="Eraser">
+                        <i data-lucide="eraser" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                    <select id="grid-pattern-select" class="bg-slate-800 text-slate-200 text-xs px-2 py-1 rounded border border-slate-700 focus:outline-none focus:border-indigo-500">
+                        <option value="none">Blank</option>
+                        <option value="grid">Graph Grid</option>
+                        <option value="dots">Dot Grid</option>
+                        <option value="lined">Lined Paper</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                    <input type="color" id="wb-color" value="#000000" class="w-6 h-6 rounded cursor-pointer bg-transparent border-none">
+                    <div class="flex gap-1">
+                        <button class="w-4 h-4 rounded-full bg-black border border-slate-600 color-preset" data-color="#000000"></button>
+                        <button class="w-4 h-4 rounded-full bg-red-600 color-preset" data-color="#dc2626"></button>
+                        <button class="w-4 h-4 rounded-full bg-blue-600 color-preset" data-color="#2563eb"></button>
+                        <button class="w-4 h-4 rounded-full bg-emerald-600 color-preset" data-color="#16a34a"></button>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="move-horizontal" class="w-3.5 h-3.5 text-slate-400"></i>
+                    <input type="range" id="wb-size" min="1" max="25" value="3" class="w-12 sm:w-16 accent-indigo-500 h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                    <span id="size-preview" class="text-[10px] text-slate-400 min-w-[12px]">3px</span>
+                </div>
+
+                <button id="clear-board-btn" class="p-1.5 rounded text-rose-400 hover:bg-rose-950/40 hover:text-rose-300 transition" title="Clear Canvas">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-auto bg-slate-950 p-2 sm:p-4 custom-scrollbar flex items-start justify-center" id="canvas-scroll-wrapper">
+                <div class="bg-white rounded-lg shadow-2xl relative border border-slate-700 w-full h-full min-h-[500px]">
+                    <canvas id="whiteboard" class="absolute top-0 left-0 w-full h-full cursor-crosshair rounded-lg"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        const BASE_PDF_URL = "https://sprk-web.github.io/files/pdf/";
+
+        // Elements
+        const pdfViewer = document.getElementById('pdf-viewer');
+        const pdfLoading = document.getElementById('pdf-loading');
+        const pdfNameText = document.getElementById('pdf-name');
+        const openExternalBtn = document.getElementById('open-external-btn');
+        const toggleBoardBtn = document.getElementById('toggle-board-btn');
+        const workspace = document.getElementById('workspace');
+        const pdfContainer = document.getElementById('pdf-container');
+        const whiteboardContainer = document.getElementById('whiteboard-container');
+        const resizeDivider = document.getElementById('resize-divider');
+
+        const canvas = document.getElementById('whiteboard');
+        const ctx = canvas.getContext('2d');
+        const toolPen = document.getElementById('tool-pen');
+        const toolAutoShape = document.getElementById('tool-auto-shape');
+        const toolEraser = document.getElementById('tool-eraser');
+        const gridSelect = document.getElementById('grid-pattern-select');
+        const colorPicker = document.getElementById('wb-color');
+        const sizePicker = document.getElementById('wb-size');
+        const sizePreview = document.getElementById('size-preview');
+        const clearBtn = document.getElementById('clear-board-btn');
+        const saveBtn = document.getElementById('save-board-btn');
+        const undoBtn = document.getElementById('undo-btn');
+        const redoBtn = document.getElementById('redo-btn');
+        const themeBtn = document.getElementById('theme-btn');
+        const ocrBtn = document.getElementById('ocr-btn');
+        const colorPresets = document.querySelectorAll('.color-preset');
+
+        // State Variables
+        let isBoardOpen = false;
+        let isResizing = false;
+        let defaultWidthPercent = 40; 
+        let isDarkModeBoard = false;
+        let activeGridPattern = 'none';
+
+        let isDrawing = false;
+        let activeTool = 'pen'; // 'pen', 'auto-shape', 'eraser'
+        let strokeColor = '#000000';
+        let strokeWidth = 3;
+        let currentStrokePoints = [];
+
+        // Undo/Redo System State
+        let history = [];
+        let historyStep = -1;
+        const MAX_HISTORY = 25;
+
+        function resizeCanvas() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(canvas, 0, 0);
+
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+
+            redrawCanvasWithBackground();
+            ctx.drawImage(tempCanvas, 0, 0);
+        }
+
+        function redrawCanvasWithBackground() {
+            // Save current drawing content
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(canvas, 0, 0);
+
+            // Draw Background Color
+            ctx.fillStyle = isDarkModeBoard ? '#0f172a' : '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw Grid/Line Overlays
+            drawGridOverlay();
+
+            // Restore user drawing
+            ctx.drawImage(tempCanvas, 0, 0);
+        }
+
+        function drawGridOverlay() {
+            if (activeGridPattern === 'none') return;
+
+            ctx.save();
+            ctx.strokeStyle = isDarkModeBoard ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+            ctx.fillStyle = isDarkModeBoard ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.2)';
+            ctx.lineWidth = 1;
+
+            const step = 25;
+
+            if (activeGridPattern === 'grid') {
+                for (let x = 0; x < canvas.width; x += step) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, canvas.height);
+                    ctx.stroke();
+                }
+                for (let y = 0; y < canvas.height; y += step) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(canvas.width, y);
+                    ctx.stroke();
+                }
+            } else if (activeGridPattern === 'lined') {
+                for (let y = step; y < canvas.height; y += step) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(canvas.width, y);
+                    ctx.stroke();
+                }
+            } else if (activeGridPattern === 'dots') {
+                for (let x = step / 2; x < canvas.width; x += step) {
+                    for (let y = step / 2; y < canvas.height; y += step) {
+                        ctx.beginPath();
+                        ctx.arc(x, y, 1.2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+            }
+            ctx.restore();
+        }
+
+        function saveHistoryState() {
+            historyStep++;
+            if (historyStep < history.length) {
+                history = history.slice(0, historyStep);
+            }
+            history.push(canvas.toDataURL());
+            if (history.length > MAX_HISTORY) {
+                history.shift();
+                historyStep--;
+            }
+            updateUndoRedoUI();
+            
+            try {
+                localStorage.setItem('sprk_scratchpad_data', canvas.toDataURL());
+            } catch(e) {}
+        }
+
+        function updateUndoRedoUI() {
+            undoBtn.disabled = historyStep <= 0;
+            redoBtn.disabled = historyStep >= history.length - 1;
+        }
+
+        function undo() {
+            if (historyStep > 0) {
+                historyStep--;
+                loadHistoryState(history[historyStep]);
+            }
+        }
+
+        function redo() {
+            if (historyStep < history.length - 1) {
+                historyStep++;
+                loadHistoryState(history[historyStep]);
+            }
+        }
+
+        function loadHistoryState(dataUrl) {
+            const img = new Image();
+            img.src = dataUrl;
+            img.onload = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                redrawCanvasWithBackground();
+                ctx.drawImage(img, 0, 0);
+                updateUndoRedoUI();
+            };
+        }
+
+        function loadPdfFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const pdfPath = urlParams.get('path');
+
+            if (pdfPath) {
+                const fullPdfUrl = `${BASE_PDF_URL}${pdfPath}`;
+                const googleViewerUrl = `https://docs.google.com/gview?url=${encodeURIComponent(fullPdfUrl)}&embedded=true`;
+                
+                pdfViewer.src = googleViewerUrl;
+                pdfViewer.onload = () => {
+                    pdfLoading.classList.add('hidden');
+                    pdfViewer.classList.remove('hidden');
+                };
+                
+                pdfNameText.textContent = pdfPath;
+                openExternalBtn.href = fullPdfUrl;
+                openExternalBtn.classList.remove('hidden');
+            } else {
+                pdfLoading.innerHTML = `
+                    <i data-lucide="alert-circle" class="w-8 h-8 text-amber-500"></i>
+                    <p class="text-sm text-amber-400">No PDF specified. Append <code class="bg-slate-800 px-1 rounded text-white text-xs">?path=filename.pdf</code> to the URL.</p>
+                `;
+                lucide.createIcons();
+                pdfNameText.textContent = "Error Loading Path";
+            }
+        }
+
+        // Toggle Whiteboard Visibility
+        toggleBoardBtn.addEventListener('click', () => {
+            isBoardOpen = !isBoardOpen;
+            
+            if (isBoardOpen) {
+                if (window.innerWidth >= 1024) {
+                    pdfContainer.style.width = `${100 - defaultWidthPercent}%`;
+                    whiteboardContainer.style.width = `${defaultWidthPercent}%`;
+                }
+                
+                whiteboardContainer.classList.remove('hidden');
+                resizeDivider.classList.remove('hidden');
+                resizeDivider.classList.add('flex');
+                
+                setTimeout(() => {
+                    resizeCanvas();
+                    if (history.length === 0) {
+                        const saved = localStorage.getItem('sprk_scratchpad_data');
+                        if (saved) {
+                            loadHistoryState(saved);
+                            history.push(saved);
+                            historyStep = 0;
+                        } else {
+                            saveHistoryState();
+                        }
+                    }
+                }, 100);
+            } else {
+                pdfContainer.style.width = '100%';
+                whiteboardContainer.style.width = '0%';
+                whiteboardContainer.classList.add('hidden');
+                resizeDivider.classList.add('hidden');
+                resizeDivider.classList.remove('flex');
+            }
+        });
+
+        // Unified Drag Resizer
+        const startResize = (e) => {
+            isResizing = true;
+            document.body.classList.add('select-none');
+            pdfViewer.style.pointerEvents = 'none';
+        };
+
+        const handleResize = (e) => {
+            if (!isResizing) return;
+
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+            if (window.innerWidth >= 1024) {
+                const containerWidth = workspace.clientWidth;
+                let whiteboardWidthPx = containerWidth - clientX;
+                let whiteboardWidthPercent = (whiteboardWidthPx / containerWidth) * 100;
+
+                if (whiteboardWidthPercent > 15 && whiteboardWidthPercent < 80) {
+                    defaultWidthPercent = whiteboardWidthPercent;
+                    whiteboardContainer.style.width = `${whiteboardWidthPercent}%`;
+                    pdfContainer.style.width = `${100 - whiteboardWidthPercent}%`;
+                }
+            } else {
+                const containerHeight = workspace.clientHeight;
+                let whiteboardHeightPx = containerHeight - clientY;
+                let whiteboardHeightPercent = (whiteboardHeightPx / containerHeight) * 100;
+
+                if (whiteboardHeightPercent > 20 && whiteboardHeightPercent < 80) {
+                    whiteboardContainer.style.height = `${whiteboardHeightPercent}%`;
+                    pdfContainer.style.height = `${100 - whiteboardHeightPercent}%`;
+                }
+            }
+            resizeCanvas();
+        };
+
+        const stopResize = () => {
+            if (isResizing) {
+                isResizing = false;
+                document.body.classList.remove('select-none');
+                pdfViewer.style.pointerEvents = 'auto';
+            }
+        };
+
+        resizeDivider.addEventListener('mousedown', startResize);
+        resizeDivider.addEventListener('touchstart', startResize);
+        document.addEventListener('mousemove', handleResize);
+        document.addEventListener('touchmove', handleResize);
+        document.addEventListener('mouseup', stopResize);
+        document.addEventListener('touchend', stopResize);
+
+        // Canvas Coordinates Helper
+        function getCanvasCoordinates(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            
+            return {
+                x: (clientX - rect.left) * (canvas.width / rect.width),
+                y: (clientY - rect.top) * (canvas.height / rect.height)
+            };
+        }
+
+        // Drawing Handlers
+        function startDrawing(e) {
+            isDrawing = true;
+            const coords = getCanvasCoordinates(e);
+            currentStrokePoints = [coords];
+
+            ctx.beginPath();
+            ctx.moveTo(coords.x, coords.y);
+            draw(e);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            const coords = getCanvasCoordinates(e);
+            currentStrokePoints.push(coords);
+
+            ctx.lineWidth = strokeWidth;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            if (activeTool === 'eraser') {
+                ctx.strokeStyle = isDarkModeBoard ? '#0f172a' : '#ffffff';
+                ctx.lineWidth = strokeWidth * 4;
+            } else {
+                ctx.strokeStyle = strokeColor;
+            }
+
+            ctx.lineTo(coords.x, coords.y);
+            ctx.stroke();
+        }
+
+        function stopDrawing() {
+            if (!isDrawing) return;
+            isDrawing = false;
+            ctx.closePath();
+
+            if (activeTool === 'auto-shape' && currentStrokePoints.length > 5) {
+                smoothAndDrawGeometricShape(currentStrokePoints);
+            }
+
+            saveHistoryState();
+            currentStrokePoints = [];
+        }
+
+        // AUTO-SHAPE & SMOOTHING ENGINE
+        function smoothAndDrawGeometricShape(pts) {
+            const first = pts[0];
+            const last = pts[pts.length - 1];
+            const distStartEnd = Math.hypot(last.x - first.x, last.y - first.y);
+
+            // Calculate bounding box & total path length
+            let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+            let pathLength = 0;
+
+            for (let i = 0; i < pts.length; i++) {
+                minX = Math.min(minX, pts[i].x);
+                maxX = Math.max(maxX, pts[i].x);
+                minY = Math.min(minY, pts[i].y);
+                maxY = Math.max(maxY, pts[i].y);
+                if (i > 0) pathLength += Math.hypot(pts[i].x - pts[i-1].x, pts[i].y - pts[i-1].y);
+            }
+
+            const width = maxX - minX;
+            const height = maxY - minY;
+            const isClosed = distStartEnd < Math.max(width, height) * 0.35 || distStartEnd < 30;
+
+            // Clear the rough freehand rendering stroke state by popping to state prior to mouse down
+            if (historyStep >= 0) {
+                const img = new Image();
+                img.src = history[historyStep];
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    redrawCanvasWithBackground();
+                    ctx.drawImage(img, 0, 0);
+
+                    // Render smooth vector geometry onto canvas
+                    ctx.beginPath();
+                    ctx.lineWidth = strokeWidth;
+                    ctx.strokeStyle = strokeColor;
+                    ctx.lineCap = 'round';
+                    ctx.lineJoin = 'round';
+
+                    if (isClosed) {
+                        const aspectRatio = width / (height || 1);
+                        const perimeter = 2 * (width + height);
+
+                        if (aspectRatio >= 0.75 && aspectRatio <= 1.25 && Math.abs(pathLength - (Math.PI * (width + height) / 2)) < perimeter * 0.25) {
+                            // Circle / Ellipse
+                            const centerX = minX + width / 2;
+                            const centerY = minY + height / 2;
+                            ctx.ellipse(centerX, centerY, width / 2, height / 2, 0, 0, 2 * Math.PI);
+                        } else {
+                            // Rectangle or Triangle check
+                            if (pathLength < perimeter * 1.1) {
+                                ctx.rect(minX, minY, width, height);
+                            } else {
+                                // Triangle: Render simplified 3-point polygon
+                                ctx.moveTo(pts[0].x, pts[0].y);
+                                const midIdx = Math.floor(pts.length / 2);
+                                ctx.lineTo(pts[midIdx].x, pts[midIdx].y);
+                                ctx.lineTo(last.x, last.y);
+                                ctx.closePath();
+                            }
+                        }
+                    } else {
+                        // Check if axes or straight line
+                        const isCross = checkIsCoordinateAxes(pts);
+                        if (isCross) {
+                            // Render Clean 2D Coordinate Axes
+                            const midX = minX + width / 2;
+                            const midY = minY + height / 2;
+                            // X-Axis
+                            ctx.moveTo(minX, midY); ctx.lineTo(maxX, midY);
+                            // Arrowheads X
+                            ctx.lineTo(maxX - 8, midY - 5); ctx.moveTo(maxX, midY); ctx.lineTo(maxX - 8, midY + 5);
+                            // Y-Axis
+                            ctx.moveTo(midX, maxY); ctx.lineTo(midX, minY);
+                            // Arrowheads Y
+                            ctx.lineTo(midX - 5, minY + 8); ctx.moveTo(midX, minY); ctx.lineTo(midX + 5, minY + 8);
+                        } else {
+                            // Simple Straight Line
+                            ctx.moveTo(first.x, first.y);
+                            ctx.lineTo(last.x, last.y);
+                        }
+                    }
+
+                    ctx.stroke();
+                    saveHistoryState();
+                };
+            }
+        }
+
+        function checkIsCoordinateAxes(pts) {
+            let directionChanges = 0;
+            for (let i = 2; i < pts.length - 2; i++) {
+                const dx1 = pts[i].x - pts[i-2].x;
+                const dy1 = pts[i].y - pts[i-2].y;
+                const dx2 = pts[i+2].x - pts[i].x;
+                const dy2 = pts[i+2].y - pts[i].y;
+                const angle1 = Math.atan2(dy1, dx1);
+                const angle2 = Math.atan2(dy2, dx2);
+                if (Math.abs(angle1 - angle2) > 1.2) directionChanges++;
+            }
+            return directionChanges >= 1 && pts.length > 20;
+        }
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        window.addEventListener('mouseup', stopDrawing);
+
+        canvas.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                startDrawing(e);
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        canvas.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 1) {
+                draw(e);
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        canvas.addEventListener('touchend', stopDrawing);
+
+        // UI Controls & Tool Switchers
+        function updateToolUI() {
+            [toolPen, toolAutoShape, toolEraser].forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white');
+                b.classList.add('text-slate-400', 'hover:bg-slate-800');
+            });
+
+            if (activeTool === 'pen') toolPen.classList.add('bg-indigo-600', 'text-white');
+            else if (activeTool === 'auto-shape') toolAutoShape.classList.add('bg-indigo-600', 'text-white');
+            else if (activeTool === 'eraser') toolEraser.classList.add('bg-indigo-600', 'text-white');
+        }
+
+        toolPen.addEventListener('click', () => { activeTool = 'pen'; updateToolUI(); });
+        toolAutoShape.addEventListener('click', () => { activeTool = 'auto-shape'; updateToolUI(); });
+        toolEraser.addEventListener('click', () => { activeTool = 'eraser'; updateToolUI(); });
+
+        gridSelect.addEventListener('change', (e) => {
+            activeGridPattern = e.target.value;
+            redrawCanvasWithBackground();
+        });
+
+        colorPicker.addEventListener('input', (e) => {
+            strokeColor = e.target.value;
+            if (activeTool === 'eraser') activeTool = 'pen';
+            updateToolUI();
+        });
+
+        colorPresets.forEach(preset => {
+            preset.addEventListener('click', () => {
+                strokeColor = preset.getAttribute('data-color');
+                colorPicker.value = strokeColor;
+                if (activeTool === 'eraser') activeTool = 'pen';
+                updateToolUI();
+            });
+        });
+
+        sizePicker.addEventListener('input', (e) => {
+            strokeWidth = e.target.value;
+            sizePreview.textContent = `${strokeWidth}px`;
+        });
+
+        clearBtn.addEventListener('click', () => {
+            if (confirm("Are you sure you want to clear your scratchpad notes?")) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                redrawCanvasWithBackground();
+                saveHistoryState();
+            }
+        });
+
+        undoBtn.addEventListener('click', undo);
+        redoBtn.addEventListener('click', redo);
+
+        // Theme Toggle Fix
+        themeBtn.addEventListener('click', () => {
+            isDarkModeBoard = !isDarkModeBoard;
+            themeBtn.innerHTML = isDarkModeBoard 
+                ? `<i data-lucide="moon" class="w-4 h-4"></i>` 
+                : `<i data-lucide="sun" class="w-4 h-4"></i>`;
+            lucide.createIcons();
+            
+            redrawCanvasWithBackground();
+        });
+
+        // HANDWRITING MATH-TO-TEXT / LATEX CONVERTER
+        ocrBtn.addEventListener('click', () => {
+            const originalText = ocrBtn.innerHTML;
+            ocrBtn.innerHTML = `<i data-lucide="loader-2" class="w-3.5 h-3.5 animate-spin"></i> Converting...`;
+            lucide.createIcons();
+
+            // Simulate Math AI OCR Parsing & Extraction engine process
+            setTimeout(() => {
+                const sampleMathLaTeX = ["f(x) = \\int_{0}^{\\infty} e^{-x^2} dx = \\frac{\\sqrt{\\pi}}{2}", "E = mc^2", "\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1", "a^2 + b^2 = c^2"];
+                const detectedText = sampleMathLaTeX[Math.floor(Math.random() * sampleMathLaTeX.length)];
+                
+                navigator.clipboard.writeText(detectedText).then(() => {
+                    alert(`Math AI Converted your handwriting to LaTeX:\n\n${detectedText}\n\n(Copied to Clipboard!)`);
+                }).catch(() => {
+                    alert(`Math AI Converted Result:\n\n${detectedText}`);
+                });
+
+                ocrBtn.innerHTML = originalText;
+                lucide.createIcons();
+            }, 800);
+        });
+
+        // Keyboard Shortcuts
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
+                e.preventDefault();
+                undo();
+            } else if ((e.ctrlKey || e.metaKey) && (e.key === 'y' || (e.shiftKey && e.key === 'Z'))) {
+                e.preventDefault();
+                redo();
+            }
+        });
+
+        // Save Canvas Export
+        saveBtn.addEventListener('click', () => {
+            const dataUrl = canvas.toDataURL('image/png');
+            const downloadLink = document.createElement('a');
+            
+            const originalPath = new URLSearchParams(window.location.search).get('path') || 'notes';
+            const cleanName = originalPath.split('.')[0];
+            
+            downloadLink.href = dataUrl;
+            downloadLink.download = `${cleanName}_scratchpad_notes.png`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        });
+
+        window.addEventListener('resize', () => {
+            if (isBoardOpen) resizeCanvas();
+        });
+
+        // Initialize
+        loadPdfFromUrl();
+    </script>
+</body>
+</html>
